@@ -1,0 +1,9 @@
+[user]
+	name = Panayotis Silintziris
+	email = psilintziris@gmail.com
+[color]
+	ui = auto
+[core]
+	editor = nvim
+[merge]
+	conflictstyle = diff3
