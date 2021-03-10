@@ -16,9 +16,12 @@ ln -sf ~/dotfiles/zshrc ~/.zshrc
 mkdir -p ~/.config/nvim/plugin
 mkdir -p ~/.config/nvim/after/plugin
 mkdir -p ~/.config/nvim/lua
+mkdir -p ~/.config/nvim/ftdetect
 
 # link wholesale
 for f in `find . -regex ".*\.vim$\|.*\.lua$"`; do
     rm -rf ~/.config/nvim/$f
     ln -s ~/dotfiles/$f ~/.config/nvim/$f
 done
+rm -rf ~/.config/nvim/coc-settings.json
+ln -s ~/dotfiles/coc-settings.json ~/.config/nvim/coc-settings.json

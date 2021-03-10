@@ -6,8 +6,10 @@
 call plug#begin('~/.vim/plugged')
 " Plug 'takac/vim-hardtime'
 Plug 'vim-airline/vim-airline'
+Plug 'preservim/nerdtree'
 Plug 'gruvbox-community/gruvbox'
 Plug 'mhinz/vim-startify'
+Plug 'mbbill/undotree'
 Plug 'tpope/vim-commentary'
 Plug 'matze/vim-move'
 Plug 'jiangmiao/auto-pairs'
@@ -57,7 +59,6 @@ set nowrap
 set expandtab
 set smarttab
 set smartindent
-
 set termguicolors
 set incsearch
 set nohlsearch
@@ -90,7 +91,7 @@ noremap <F2> :set invrelativenumber<cr>
 noremap <F3> :set hlsearch!<cr>
 " toggle git gutter
 noremap <F4> :GitGutterToggle<cr>
-noremap <F5> :Startify<cr>
+noremap <F5> :NERDTreeToggle<cr>
 noremap <F6> :TagbarToggle<cr>
 " edit the vimrc
 noremap <F11> :vsp $MYVIMRC<cr>
@@ -98,12 +99,23 @@ noremap <F11> :vsp $MYVIMRC<cr>
 noremap <F12> :source $MYVIMRC<cr>
 " leader key
 let mapleader = " "
+
+" trea visual and actual lines much the same
+" noremap j gj
+" noremap k gk
+" noremap $ g$
+" noremap 0 g0
+
+" quit all
+nnoremap <leader>qq :qall!<cr>
 " escape with jk/kj
 inoremap jk <esc>
 inoremap kj <esc>
 " prevent x and X from overriding the clipboard
 nnoremap x "_x
 nnoremap X "_x
+" visual model paste without ovewriting the default registers
+vnoremap <leader>p "_dP
 " shift y to copy from the cursor till the end of the line
 nnoremap Y y$
 " keep cursor at the bottom of the visual selection after yanking
@@ -111,9 +123,9 @@ xnoremap y ygv<esc>
 " prevent selecting and pasting from overwriting what was originally copied
 xnoremap p pgvy
 " clear search highlights with double space
-map <leader><space> :let @/=''<cr>
+map <leader>cls :let @/=''<cr>
 " insert empty lines above the current line
-noremap <C-o> O<Esc>
+noremap <leader><space> O<Esc>
 " navigate in buffers while in window with up and oown arrows
 nnoremap <Up> :bn<cr>
 nnoremap <Down> :bp<cr>
@@ -123,7 +135,7 @@ nnoremap <Right> <C-w>l
 " open a new tab
 nnoremap <C-t> :tabnew<cr>
 " open netrw
-nnoremap <C-n> :Vexplore<cr>
+" nnoremap <C-n> :Vexplore<cr>
 " navigate through tabs
 nnoremap <leader>1 1gt
 nnoremap <leader>2 2gt
@@ -150,20 +162,99 @@ xnoremap <leader>rc :s///gIc<Left><Left><Left><Left>
 nnoremap <silent> s* :let @/='\<'.expand('<cword>').'\>'<CR>cgn
 xnoremap <silent> s* "sy:let @/=@s<CR>cgn
 
-" coc related mappings
 
-" use <c-space> to trigger completion
-inoremap  <silent><expr> <c-space> coc#refresh()
+" Conquer of Code (coc.nvim) related mappings
 
-" rename (coc-rename)
-nmap <leader>pr <Plug>(coc-rename)
+" Project wide search
 nmap <leader>prw :CocSearch <C-r>=expand("<cword>")<cr><cr>
 
 " use [g  and ]g to navigate diagnostics
+" use :CocDiagnostics to get all diagnostics of current buffer in location list
 nmap <silent> [g <Plug>(coc-diagnostic-prev)
 nmap <silent> ]g <Plug>(coc-diagnostic-next)
 
+" go to navigation
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
 
+" Use K to view documentation for an item in preview window
+" this uses the show_documentation function defined later in this file
+nnoremap <silent> K :call <SID>show_documentation()<cr>
+
+" Symbol renaming
+nmap <leader>rn <Plug>(coc-rename)
+
+" formatting selected code
+xmap <leader>fmt <Plug>(coc-format-selected)
+nmap <leader>fmt <Plug>(coc-format-selected)
+
+" Applying codeAction to the selected region
+" Example: `<leader>aap` for current paragraph
+xmap <leader>a <Plug>(coc-codeaction-selected)
+nmap <leader>a <Plug>(coc-codeaction-selected)
+
+" Remap keys for applying codeAction to the current buffer.
+nmap <leader>act <Plug>(coc-codeaction)
+" apply auto fix to problem in the current line
+nmap <leader>fix <Plug>(coc-fix-current)
+
+" Mappings for CocList
+" show all diagnostics
+nnoremap <silent><nowait> <leader>diag :<C-u>CocList diagnostics<cr>
+" commands
+nnoremap <silent><nowait> <leader>com :<C-u>CocList commands<cr>
+" find symbol of current document
+nnoremap <silent><nowait> <leader>out :<C-u>CocList outline<cr>
+" search for workspace symbols
+nnoremap <silent><nowait> <leader>sym :<C-u>CocList -I symbols<cr>
+
+
+" use tab for trigger completion with characters ahead and navigate
+" NOTE: use command ':verbose imap <tab>' to make sure tab is not mapped
+" by any other plugin before putting this into your config
+inoremap <silent><expr> <Tab>
+  \ pumvisible() ? "\<C-n>" :
+  \ <SID>check_back_space() ? "\<tab>" :
+  \ coc#refresh()
+inoremap <expr><S-Tab> pumvisible() ? "\<C-p>" : "\<C-h>"
+inoremap <silent><expr> <C-Space> coc#refresh()
+
+" make <cr> auto-select the first completion item and notify coc.nvim to
+" format on enter, <cr> could be remapped by other vim plugin
+inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm() : "\<C-g>u\<cr>\<C-r>=coc#on_enter()\<cr>"
+
+" telescope shortcuts
+nnoremap <C-g> :lua require('mystuff.telescope').grep_string()<cr>
+nnoremap <C-p> :lua require('mystuff.telescope').find_files()<cr>
+nnoremap <C-n> :lua require('mystuff.telescope').file_browser()<cr>
+nnoremap <leader>ll :lua require('mystuff.telescope').live_grep()<cr>
+nnoremap <leader>gg :lua require('telescope.builtin').grep_string { search = vim.fn.expand("<cword>") }<cr>
+nnoremap <leader>sf :NERDTreeFind<cr><c-l>
+nnoremap <leader>rr :lua require('telescope.builtin').registers()<cr>
+nnoremap <leader>ee :lua require('telescope.builtin').buffers()<cr>
+nnoremap <leader>hh :lua require('telescope.builtin').help_tags()<cr>
+nnoremap <leader>gb :lua require('mystuff.telescope').git_branches()<cr>
+nnoremap <leader>sdf :lua require('mystuff.telescope').search_dotfiles()<cr>
+
+"----------------------------------------------------------------------------------------------------------------------
+"----------------------------------------------------------------------------------------------------------------------
+" Commands
+"----------------------------------------------------------------------------------------------------------------------
+"----------------------------------------------------------------------------------------------------------------------
+" add `:Format` command to format current buffer
+command! -nargs=0 Format :call CocAction('format')
+
+" Add `:Fold` command to fold current buffer
+command! -nargs=? Fold :call CocAction('fold', <f-args>)
+
+" Add `:OR` command to organize imports of the current buffer
+command! -nargs=0 OR :call CocAction('runCommand', 'editor.action.organizeImport')
+
+" set wrap, line break and do now show and invisible characters
+command! -nargs=* Wrap set wrap linebreak nolist
+command! -nargs=* Unwrap set nowrap nolinebreak nolist
 
 "----------------------------------------------------------------------------------------------------------------------
 "----------------------------------------------------------------------------------------------------------------------
@@ -203,8 +294,8 @@ nnoremap <leader>ao :call TurnOnGuides()<cr>
 nnoremap <leader>ae :call TurnOffGuides()<cr>
 augroup VisualGuides
   autocmd!
-  autocmd FileType *\(^\(startify\|netrw\|help\)\)\@<! :call TurnOnGuides()
-  autocmd FileType netrw,help :call TurnOffGuides()
+  autocmd FileType *\(^\(TelescopePrompt\|startify\|netrw\|help\)\)\@<! :call TurnOnGuides()
+  autocmd FileType TelescopePrompt,startify,netrw,help :call TurnOffGuides()
 augroup END
 
 " trim trailing white space and empty lines
@@ -230,6 +321,17 @@ augroup CocHighlight
   autocmd CursorHold * silent call CocActionAsync('highlight')
 augroup end
 
+" change local working directory upon tab creation
+" function! OnTabEnter(path)
+"   if isdirectory(a:path)
+"     let dirname = a:path
+"   else
+"     let dirname = fnamemodify(a:path, ":h")
+"   endif
+"   execute "tcd " . dirname
+" endfunction()
+" autocmd TabNewEntered * call OnTabEnter(expand("<amatch>"))
+
 "----------------------------------------------------------------------------------------------------------------------
 "----------------------------------------------------------------------------------------------------------------------
 " Plugins configuration
@@ -242,7 +344,7 @@ let g:gruvbox_invert_selection='0'
 let g:gruvbox_italic='1'
 let g:gruvbox_improved_strings='0'
 let g:gruvbox_italicize_strings='0'
-let g:gruvbox_transparent_bg='0'
+let g:gruvbox_transparent_bg='1'
 let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
 let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
 highlight ColorColumn ctermbg=0 guibg=grey
@@ -260,26 +362,15 @@ let g:netrw_localrmdir = 'rm -r'
 let g:AutoPairsFlyMode = 1
 let g:AutoPairsShortcutBackInsert = '<M-b>'
 let g:AutoPairsShortcutJump = '<M-n>'
-let g:AutoPairsShortcutToggle = '<leader>ap'
+let g:AutoPairsShortcutToggle = '<M-p>'
 let g:AutoPairsShortcutFastWrap = '<M-e>'
 
 " matze/vim-move
 let g:move_key_modifier = 'C'
 
 " nvim-telescope/telescope.nvim
+lua require('plenary.reload').reload_module('mystuff.telescope')
 lua require('mystuff')
-nnoremap <C-g> :lua require('mystuff.telescope').grep_this_string()<cr>
-nnoremap <c-p> :lua require('mystuff.telescope').find_files()<cr>
-nnoremap <leader>ll :lua require('telescope.builtin').live_grep()<cr>
-nnoremap <leader>gg :lua require('telescope.builtin').grep_string { search = vim.fn.expand("<cword>") }<cr>
-
-nnoremap <leader>rg :lua require('telescope.builtin').registers()<cr>
-nnoremap <leader>fb :lua require('telescope.builtin').file_browser()<cr>
-nnoremap <leader>bf :lua require('telescope.builtin').buffers()<cr>
-nnoremap <leader>ht :lua require('telescope.builtin').help_tags()<cr>
-" my stuff
-nnoremap <leader>gb :lua require('mystuff.telescope').git_branches()<cr>
-nnoremap <leader>sdf :lua require('mystuff.telescope').search_dotfiles()<cr>
 
 " treesitter
 lua require'nvim-treesitter.configs'.setup {
@@ -322,6 +413,9 @@ let g:startify_change_to_dir = 0
 let g:startify_session_number = 5
 let g:startify_session_sort = 1
 
+" NERDTree
+let g:NERDTreeWinSize=50
+
 " coc - conquer of code
 let g:coc_global_extensions = [
 \ "coc-tsserver",
@@ -336,7 +430,7 @@ let g:coc_global_extensions = [
 \ "coc-actions"
 \ ]
 
-" go to navigation
+" used to show documentation
 function! s:show_documentation()
   if (index(['vim','help'], &filetype) >= 0)
     execute 'h '.expand('<cword>')
@@ -346,9 +440,11 @@ function! s:show_documentation()
     execute '!' . &keywordprg . " " . expand('<cword>')
   endif
 endfunction
-nnoremap <silent> K :call <SID>show_documentation()<cr>
-nmap <leader>gd <Plug>(coc-definition)
-nmap <leader>gr <Plug>(coc-references)
-nmap <leader>gi <Plug>(coc-implementation)
-nmap <leader>gt <Plug>(coc-type-definition)
 
+" used for completion by using tabs
+function! s:check_back_space() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1] =~# '\s'
+endfunction
+
+echo "Vim configuration reloaded!!!"
