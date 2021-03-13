@@ -1,21 +1,18 @@
 # If you come from bash you might have to change your $PATH.
 export PATH=$HOME/bin:/usr/local/bin:$HOME/.node_modules/bin:$PATH
-export PATH=/home/silintzir/.gem/ruby/2.7.0/bin:$PATH
 export EDITOR=/usr/bin/nvim
 # Path to your oh-my-zsh installation.
 export ZSH=$HOME/.oh-my-zsh
-export PYENV_ROOT=$HOME/.pyenv
-export PATH=$PYENV_ROOT/bin:$PATH
 export XDG_CONFIG_HOME=$HOME/.config
 export XDG_DATA_HOME=$HOME/.local/share
 export VIMRC=$HOME/.config/nvim/init.vim
 export npm_config_prefix=~/.node_modules
 
-# Load pyenv automatically by appending
-# the following to ~/.zshrc:
-eval "$(pyenv init -)"
-pyenv shell 3.8.6
+# needed by perl
+export LC_CTYPE=en_US.UTF-8
+export LC_ALL=en_US.UTF-8
 
+source /Users/silintzir/perl5/perlbrew/etc/bashrc
 # this one sets the right prompt to show the time
 # RPROMPT="%t"
 
@@ -119,5 +116,4 @@ source $ZSH/oh-my-zsh.sh
 alias sshreal="ssh silintzir@pheidippides.mwebconcepts.com -p 30000"
 alias ls="exa --long --binary --header --all"
 alias cat="bat"
-alias dja="pipenv run python manage.py runserver"
 alias vim="nvim"

@@ -80,7 +80,7 @@ end
 main.search_dotfiles = function ()
   local opts = vim.deepcopy(center_list)
   opts.prompt_title = 'Find in dotfiles'
-  opts.cwd = "$HOME/dotfiles/"
+  opts.cwd = "$HOME/Projects/dotfiles/"
   opts.results_height = 10
   require('telescope.builtin').find_files(opts)
 end

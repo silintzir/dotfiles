@@ -2,26 +2,30 @@
 
 # alacritty
 rm -rf ~/.alacritty.yml
-ln -sf ~/dotfiles/alacritty.yml ~/.alacritty.yml
+ln -sf ~/Projects/dotfiles/alacritty.yml ~/.alacritty.yml
 
 # tmux
 rm -rf ~/.tmux.conf
-ln -sf ~/dotfiles/tmux.conf ~/.tmux.conf
+ln -sf ~/Projects/dotfiles/tmux.conf ~/.tmux.conf
 
 # zsh
 rm -rf ~/.zshrc
-ln -sf ~/dotfiles/zshrc ~/.zshrc
+ln -sf ~/Projects/dotfiles/zshrc ~/.zshrc
 
 # nvim
 mkdir -p ~/.config/nvim/plugin
 mkdir -p ~/.config/nvim/after/plugin
-mkdir -p ~/.config/nvim/lua
+mkdir -p ~/.config/nvim/lua/mystuff
 mkdir -p ~/.config/nvim/ftdetect
 
 # link wholesale
-for f in `find . -regex ".*\.vim$\|.*\.lua$"`; do
+for f in `find . -regex ".*\.vim$"`; do
     rm -rf ~/.config/nvim/$f
-    ln -s ~/dotfiles/$f ~/.config/nvim/$f
+    ln -s ~/Projects/dotfiles/$f ~/.config/nvim/$f
+done
+for f in `find . -regex ".*\.lua$"`; do
+    rm -rf ~/.config/nvim/$f
+    ln -s ~/Projects/dotfiles/$f ~/.config/nvim/$f
 done
 rm -rf ~/.config/nvim/coc-settings.json
-ln -s ~/dotfiles/coc-settings.json ~/.config/nvim/coc-settings.json
+ln -s ~/Projects/dotfiles/coc-settings.json ~/.config/nvim/coc-settings.json

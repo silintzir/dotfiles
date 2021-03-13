@@ -226,10 +226,10 @@ inoremap <silent><expr> <C-Space> coc#refresh()
 inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm() : "\<C-g>u\<cr>\<C-r>=coc#on_enter()\<cr>"
 
 " telescope shortcuts
-nnoremap <C-g> :lua require('mystuff.telescope').grep_string()<cr>
-nnoremap <C-p> :lua require('mystuff.telescope').find_files()<cr>
-nnoremap <C-n> :lua require('mystuff.telescope').file_browser()<cr>
-nnoremap <leader>ll :lua require('mystuff.telescope').live_grep()<cr>
+nnoremap <leader>gs :lua require('mystuff.telescope').grep_string()<cr>
+nnoremap <leader>ff :lua require('mystuff.telescope').find_files()<cr>
+nnoremap <leader>fb :lua require('mystuff.telescope').file_browser()<cr>
+nnoremap <leader>lg :lua require('mystuff.telescope').live_grep()<cr>
 nnoremap <leader>gg :lua require('telescope.builtin').grep_string { search = vim.fn.expand("<cword>") }<cr>
 nnoremap <leader>sf :NERDTreeFind<cr><c-l>
 nnoremap <leader>rr :lua require('telescope.builtin').registers()<cr>
@@ -294,8 +294,8 @@ nnoremap <leader>ao :call TurnOnGuides()<cr>
 nnoremap <leader>ae :call TurnOffGuides()<cr>
 augroup VisualGuides
   autocmd!
-  autocmd FileType *\(^\(TelescopePrompt\|startify\|netrw\|help\)\)\@<! :call TurnOnGuides()
-  autocmd FileType TelescopePrompt,startify,netrw,help :call TurnOffGuides()
+  autocmd FileType *\(^\(TelescopePrompt\|startify\|netrw\|terminal\|help\)\)\@<! :call TurnOnGuides()
+  autocmd FileType TelescopePrompt,startify,netrw,help,terminal :call TurnOffGuides()
 augroup END
 
 " trim trailing white space and empty lines
@@ -387,24 +387,24 @@ let g:startify_lists = [
       \ { 'type': 'bookmarks', 'header': ['   Bookmarks'] }
       \ ]
 let g:startify_bookmarks = [
-      \   {'a': '~/dotfiles/alacritty.yml'},
-      \   {'c': '~/dotfiles/init.vim'} ,
-      \   {'i': '~/dotfiles/install'},
-      \   {'l': '~/dotfiles/lua/mystuff/telescope.lua'},
-      \   {'s': '~/dotfiles/SHORTCUTS.md'},
-      \   {'t': '~/dotfiles/tmux.conf'},
-      \   {'z': '~/dotfiles/zshrc'},
+      \   {'a': '~/Projects/dotfiles/alacritty.yml'},
+      \   {'c': '~/Projects/dotfiles/init.vim'} ,
+      \   {'i': '~/Projects/dotfiles/install'},
+      \   {'l': '~/Projects/dotfiles/lua/mystuff/telescope.lua'},
+      \   {'s': '~/Projects/dotfiles/SHORTCUTS.md'},
+      \   {'t': '~/Projects/dotfiles/tmux.conf'},
+      \   {'z': '~/Projects/dotfiles/zshrc'},
       \ ]
 let g:startify_enable_special = 0
 let g:startify_fortune_use_unicode = 1
 let g:startify_skiplist = [
-      \  '~/dotfiles/alacritty.yml',
-      \  '~/dotfiles/init.vim' ,
-      \  '~/dotfiles/install',
-      \  '~/dotfiles/lua/mystuff/telescope.lua',
-      \  '~/dotfiles/SHORTCUTS.md',
-      \  '~/dotfiles/tmux.conf',
-      \  '~/dotfiles/zshrc'
+      \  '~/Projects/dotfiles/alacritty.yml',
+      \  '~/Projects/dotfiles/init.vim' ,
+      \  '~/Projects/dotfiles/install',
+      \  '~/Projects/dotfiles/lua/mystuff/telescope.lua',
+      \  '~/Projects/dotfiles/SHORTCUTS.md',
+      \  '~/Projects/dotfiles/tmux.conf',
+      \  '~/Projects/dotfiles/zshrc'
       \ ]
 let g:startify_custom_header = 'startify#pad(startify#fortune#quote())'
 let g:startify_session_persistence = 1
