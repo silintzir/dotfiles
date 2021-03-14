@@ -116,4 +116,5 @@ source $ZSH/oh-my-zsh.sh
 alias sshreal="ssh silintzir@pheidippides.mwebconcepts.com -p 30000"
 alias ls="exa --long --binary --header --all"
 alias cat="bat"
-alias vim="nvim"
+alias vim="$HOME/nvim-osx64/bin/nvim"
+export PATH="/usr/local/sbin:$PATH"

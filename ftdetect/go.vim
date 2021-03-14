@@ -1,1 +1,1 @@
-autocmd BufNewFile,BufRead *.go set filetype=php
+" autocmd BufNewFile,BufRead *.go set filetype=php

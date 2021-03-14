@@ -4,7 +4,6 @@
 "----------------------------------------------------------------------------------------------------------------------
 "----------------------------------------------------------------------------------------------------------------------
 call plug#begin('~/.vim/plugged')
-" Plug 'takac/vim-hardtime'
 Plug 'vim-airline/vim-airline'
 Plug 'preservim/nerdtree'
 Plug 'gruvbox-community/gruvbox'
@@ -427,7 +426,8 @@ let g:coc_global_extensions = [
 \ "coc-css",
 \ "coc-emmet",
 \ "coc-html",
-\ "coc-actions"
+\ "coc-actions",
+\ "coc-lists"
 \ ]
 
 " used to show documentation

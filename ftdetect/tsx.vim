@@ -1,1 +1,1 @@
-autocmd BufEnter *.tsx set formatoptions-=cro
+" autocmd BufEnter *.tsx set formatoptions-=cro
