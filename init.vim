@@ -4,6 +4,8 @@
 "----------------------------------------------------------------------------------------------------------------------
 "----------------------------------------------------------------------------------------------------------------------
 call plug#begin('~/.vim/plugged')
+Plug 'kana/vim-textobj-user'
+Plug 'kana/vim-textobj-entire'
 Plug 'vim-airline/vim-airline'
 Plug 'preservim/nerdtree'
 Plug 'gruvbox-community/gruvbox'
@@ -78,6 +80,7 @@ set signcolumn=yes
 set ruler
 set completeopt=menuone,noinsert,noselect
 set updatetime=300
+set nrformats=
 
 "----------------------------------------------------------------------------------------------------------------------
 "----------------------------------------------------------------------------------------------------------------------
@@ -122,7 +125,7 @@ xnoremap y ygv<esc>
 " prevent selecting and pasting from overwriting what was originally copied
 xnoremap p pgvy
 " clear search highlights with double space
-map <leader>cls :let @/=''<cr>
+map <leader>/ :let @/=''<cr>
 " insert empty lines above the current line
 noremap <leader><space> O<Esc>
 " navigate in buffers while in window with up and oown arrows
@@ -173,10 +176,10 @@ nmap <silent> [g <Plug>(coc-diagnostic-prev)
 nmap <silent> ]g <Plug>(coc-diagnostic-next)
 
 " go to navigation
-nmap <silent> gd <Plug>(coc-definition)
-nmap <silent> gy <Plug>(coc-type-definition)
-nmap <silent> gi <Plug>(coc-implementation)
-nmap <silent> gr <Plug>(coc-references)
+nmap <leader>gd <Plug>(coc-definition)
+nmap <leader>gy <Plug>(coc-type-definition)
+nmap <leader>gi <Plug>(coc-implementation)
+nmap <leader>gr <Plug>(coc-references)
 
 " Use K to view documentation for an item in preview window
 " this uses the show_documentation function defined later in this file
@@ -225,10 +228,10 @@ inoremap <silent><expr> <C-Space> coc#refresh()
 inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm() : "\<C-g>u\<cr>\<C-r>=coc#on_enter()\<cr>"
 
 " telescope shortcuts
-nnoremap <leader>gs :lua require('mystuff.telescope').grep_string()<cr>
-nnoremap <leader>ff :lua require('mystuff.telescope').find_files()<cr>
+nnoremap <leader>gg :lua require('mystuff.telescope').grep_string()<cr>
+nnoremap <C-P> :lua require('mystuff.telescope').find_files()<cr>
 nnoremap <leader>fb :lua require('mystuff.telescope').file_browser()<cr>
-nnoremap <leader>lg :lua require('mystuff.telescope').live_grep()<cr>
+nnoremap <leader>ll :lua require('mystuff.telescope').live_grep()<cr>
 nnoremap <leader>gg :lua require('telescope.builtin').grep_string { search = vim.fn.expand("<cword>") }<cr>
 nnoremap <leader>sf :NERDTreeFind<cr><c-l>
 nnoremap <leader>rr :lua require('telescope.builtin').registers()<cr>
@@ -319,6 +322,15 @@ augroup CocHighlight
   autocmd!
   autocmd CursorHold * silent call CocActionAsync('highlight')
 augroup end
+
+" NERDTree
+" auto show nerd tree when vim opens
+autocmd VimEnter * NERDTree | wincmd p
+" prevent other buffers replacing the NERDTree
+autocmd BufEnter * if bufname('#') =~ 'NERD_tree_\d\+' && bufname('%') !~ 'NERD_tree_\d\+' && winnr('$') > 1 |
+    \ let buf=bufnr() | buffer# | execute "normal! \<C-W>w" | execute 'buffer'.buf | endif
+" same nerd tree to oepn on every tab automatically
+autocmd BufWinEnter * silent NERDTreeMirror
 
 " change local working directory upon tab creation
 " function! OnTabEnter(path)
