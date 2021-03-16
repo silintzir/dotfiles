@@ -57,6 +57,13 @@ main.find_files = function()
   require('telescope.builtin').find_files(opts)
 end
 
+main.buffers = function()
+  local opts = vim.deepcopy(center_list)
+  opts.prompt_title = 'Find in open buffers'
+  opts.find_command = { 'rg', '--hidden', '--files' }
+  require('telescope.builtin').buffers(opts)
+end
+
 main.grep_string = function()
   local opts = vim.deepcopy(with_preview)
   opts.search = vim.fn.input('Grep for > ')

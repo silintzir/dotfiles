@@ -12,9 +12,10 @@ Plug 'gruvbox-community/gruvbox'
 Plug 'mhinz/vim-startify'
 Plug 'mbbill/undotree'
 Plug 'tpope/vim-commentary'
+Plug 'tpope/vim-unimpaired'
+Plug 'tpope/vim-surround'
 Plug 'matze/vim-move'
 Plug 'jiangmiao/auto-pairs'
-Plug 'tpope/vim-surround'
 Plug 'machakann/vim-highlightedyank'
 Plug 'airblade/vim-gitgutter'
 Plug 'haya14busa/is.vim'
@@ -126,8 +127,9 @@ xnoremap y ygv<esc>
 xnoremap p pgvy
 " clear search highlights with double space
 map <leader>/ :let @/=''<cr>
-" insert empty lines above the current line
-noremap <leader><space> O<Esc>
+" insert empty spaces and lines
+noremap <leader><space> i <Esc>
+noremap <leader>o O<Esc>
 " navigate in buffers while in window with up and oown arrows
 nnoremap <Up> :bn<cr>
 nnoremap <Down> :bp<cr>
@@ -229,13 +231,13 @@ inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm() : "\<C-g>u\<cr
 
 " telescope shortcuts
 nnoremap <leader>gg :lua require('mystuff.telescope').grep_string()<cr>
+nnoremap <leader>ee :lua require('mystuff.telescope').buffers()<cr>
 nnoremap <C-P> :lua require('mystuff.telescope').find_files()<cr>
 nnoremap <leader>fb :lua require('mystuff.telescope').file_browser()<cr>
 nnoremap <leader>ll :lua require('mystuff.telescope').live_grep()<cr>
 nnoremap <leader>gg :lua require('telescope.builtin').grep_string { search = vim.fn.expand("<cword>") }<cr>
 nnoremap <leader>sf :NERDTreeFind<cr><c-l>
 nnoremap <leader>rr :lua require('telescope.builtin').registers()<cr>
-nnoremap <leader>ee :lua require('telescope.builtin').buffers()<cr>
 nnoremap <leader>hh :lua require('telescope.builtin').help_tags()<cr>
 nnoremap <leader>gb :lua require('mystuff.telescope').git_branches()<cr>
 nnoremap <leader>sdf :lua require('mystuff.telescope').search_dotfiles()<cr>
@@ -267,7 +269,7 @@ command! -nargs=* Unwrap set nowrap nolinebreak nolist
 autocmd VimResized * wincmd=
 
 " Update a buffer's contents on focus if changed outside vim
-autocmd FocusGained,BufEnter * :checktime
+" autocmd FocusGained,BufEnter * :checktime
 
 " Unset  paste on insert leave
 autocmd InsertLeave * silent! set nopaste
@@ -326,11 +328,11 @@ augroup end
 " NERDTree
 " auto show nerd tree when vim opens
 autocmd VimEnter * NERDTree | wincmd p
-" prevent other buffers replacing the NERDTree
-autocmd BufEnter * if bufname('#') =~ 'NERD_tree_\d\+' && bufname('%') !~ 'NERD_tree_\d\+' && winnr('$') > 1 |
-    \ let buf=bufnr() | buffer# | execute "normal! \<C-W>w" | execute 'buffer'.buf | endif
-" same nerd tree to oepn on every tab automatically
-autocmd BufWinEnter * silent NERDTreeMirror
+" " prevent other buffers replacing the NERDTree
+" autocmd BufEnter * if bufname('#') =~ 'NERD_tree_\d\+' && bufname('%') !~ 'NERD_tree_\d\+' && winnr('$') > 1 |
+"     \ let buf=bufnr() | buffer# | execute "normal! \<C-W>w" | execute 'buffer'.buf | endif
+" " same nerd tree to oepn on every tab automatically
+" autocmd BufWinEnter * silent NERDTreeMirror
 
 " change local working directory upon tab creation
 " function! OnTabEnter(path)
@@ -370,7 +372,7 @@ let g:netrw_winsize = 20
 let g:netrw_localrmdir = 'rm -r'
 
 " jiangmiao/auto-pairs
-let g:AutoPairsFlyMode = 1
+let g:AutoPairsFlyMode = 0
 let g:AutoPairsShortcutBackInsert = '<M-b>'
 let g:AutoPairsShortcutJump = '<M-n>'
 let g:AutoPairsShortcutToggle = '<M-p>'
