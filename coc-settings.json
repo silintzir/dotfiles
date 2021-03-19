@@ -1,8 +1,19 @@
 {
   "coc.preferences.colorSupport": true,
-  "coc.preferences.formatOnSaveFiletypes": ["javascript", "html","javascriptreact", "typescript", "typescriptreact", "css", "json"],
+  "coc.preferences.formatOnSaveFiletypes": [
+    "jsonc",
+    "javascript",
+    "html",
+    "javascriptreact",
+    "typescript",
+    "typescriptreact",
+    "css",
+    "json"
+  ],
   "eslint.alwaysShowStatus": true,
   "eslint.autoFixOnSave": true,
   "html.filetypes": ["html", "ejs", "handlebars"],
-  "html.format.indentInnerHtml": true
+  "html.format.indentInnerHtml": true,
+  "tsserver.enableJavascript": false,
+  "tsserver.enable": true
 }

@@ -1,5 +1,5 @@
 "----------------------------------------------------------------------------------------------------------------------
-"----------------------------------------------------------------------------------------------------------------------
+"---------------------------------------------------------------------------------------------------------------------i
 " Plugins
 "----------------------------------------------------------------------------------------------------------------------
 "----------------------------------------------------------------------------------------------------------------------
@@ -31,6 +31,10 @@ Plug 'nvim-treesitter/playground'
 Plug 'kyazdani42/nvim-web-devicons'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'neoclide/jsonc.vim'
+Plug 'heavenshell/vim-jsdoc', { 
+  \ 'for': ['javascript', 'javascript.jsc', 'typescript', 'typescriptreact'],
+  \ 'do': 'make install'
+\}
 call plug#end()
 
 "----------------------------------------------------------------------------------------------------------------------
@@ -39,6 +43,7 @@ call plug#end()
 "----------------------------------------------------------------------------------------------------------------------
 "----------------------------------------------------------------------------------------------------------------------
 " set exrc
+filetype plugin indent on
 set background=dark
 set guifont=UbuntuMono\ Nerd\ Font\ 14
 set cursorline
@@ -308,16 +313,16 @@ fun! TrimWhitespace()
   keeppatterns %s/\s\+$//e
   call winrestview(l:save)
 endfun
-augroup Trimmer
-  autocmd!
-  autocmd BufWritePre * :call TrimWhitespace()
-augroup END
+" augroup Trimmer
+"   autocmd!
+"   autocmd BufWritePre * :call TrimWhitespace()
+" augroup END
 
 " correct comment highlighting in json files
-augroup JsonToJsonc
-  autocmd!
-  autocmd! FileType json set filetype=jsonc
-augroup end
+" augroup JsonToJsonc
+"   autocmd!
+"   autocmd! FileType json set filetype=jsonc
+" augroup end
 
 " coc highlight
 augroup CocHighlight
@@ -428,6 +433,7 @@ let g:startify_session_sort = 1
 
 " NERDTree
 let g:NERDTreeWinSize=50
+let g:NERDTreeShowHidden=1
 
 " coc - conquer of code
 let g:coc_global_extensions = [
