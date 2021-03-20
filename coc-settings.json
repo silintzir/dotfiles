@@ -8,12 +8,15 @@
     "typescript",
     "typescriptreact",
     "css",
-    "json"
+    "json",
+    "lua"
   ],
   "eslint.alwaysShowStatus": true,
   "eslint.autoFixOnSave": true,
   "html.filetypes": ["html", "ejs", "handlebars"],
   "html.format.indentInnerHtml": true,
   "tsserver.enableJavascript": false,
-  "tsserver.enable": true
+  "tsserver.enable": true,
+  "lua.enable": true,
+  "Lua.diagnostics.globals": ["hs", "vim"]
 }

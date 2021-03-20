@@ -4,6 +4,8 @@
 "----------------------------------------------------------------------------------------------------------------------
 "----------------------------------------------------------------------------------------------------------------------
 call plug#begin('~/.vim/plugged')
+" prebvim lsp plugins
+" 
 Plug 'kana/vim-textobj-user'
 Plug 'kana/vim-textobj-entire'
 Plug 'vim-airline/vim-airline'
@@ -313,10 +315,10 @@ fun! TrimWhitespace()
   keeppatterns %s/\s\+$//e
   call winrestview(l:save)
 endfun
-" augroup Trimmer
-"   autocmd!
-"   autocmd BufWritePre * :call TrimWhitespace()
-" augroup END
+augroup Trimmer
+  autocmd!
+  autocmd BufWritePre * :call TrimWhitespace()
+augroup END
 
 " correct comment highlighting in json files
 " augroup JsonToJsonc
@@ -393,7 +395,7 @@ lua require('mystuff')
 " treesitter
 lua require'nvim-treesitter.configs'.setup {
   \ highlight = { enable = true },
-  \ indent = { enable = true }
+  \ indent = { enable = false }
   \ }
 
 " mhinz/startify
@@ -447,7 +449,8 @@ let g:coc_global_extensions = [
 \ "coc-emmet",
 \ "coc-html",
 \ "coc-actions",
-\ "coc-lists"
+\ "coc-lists",
+\ "coc-lua"
 \ ]
 
 " used to show documentation

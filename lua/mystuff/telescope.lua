@@ -1,7 +1,6 @@
 require('telescope').load_extension('fzy_native')
 
 local actions = require('telescope.actions')
-local themes = require('telescope.themes')
 local main = {}
 
 local center_list = require'telescope.themes'.get_dropdown({
