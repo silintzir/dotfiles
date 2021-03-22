@@ -4,8 +4,18 @@
 "----------------------------------------------------------------------------------------------------------------------
 "----------------------------------------------------------------------------------------------------------------------
 call plug#begin('~/.vim/plugged')
-" prebvim lsp plugins
-" 
+
+
+" treesitter
+Plug 'nvim-treesitter/nvim-treesitter', { 'do': ':TSUpdate' }
+Plug 'nvim-treesitter/playground'
+
+" telescope
+Plug 'nvim-lua/popup.nvim'
+Plug 'nvim-lua/plenary.nvim'
+Plug 'nvim-telescope/telescope.nvim'
+Plug 'nvim-telescope/telescope-fzy-native.nvim'
+
 Plug 'kana/vim-textobj-user'
 Plug 'kana/vim-textobj-entire'
 Plug 'vim-airline/vim-airline'
@@ -24,16 +34,11 @@ Plug 'haya14busa/is.vim'
 Plug 'preservim/tagbar'
 Plug 'bronson/vim-visual-star-search'
 Plug 'tpope/vim-fugitive'
-Plug 'nvim-lua/popup.nvim'
-Plug 'nvim-lua/plenary.nvim'
-Plug 'nvim-telescope/telescope.nvim'
-Plug 'nvim-telescope/telescope-fzy-native.nvim'
-Plug 'nvim-treesitter/nvim-treesitter', { 'do': ':TSUpdate' }
-Plug 'nvim-treesitter/playground'
+
 Plug 'kyazdani42/nvim-web-devicons'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'neoclide/jsonc.vim'
-Plug 'heavenshell/vim-jsdoc', { 
+Plug 'heavenshell/vim-jsdoc', {
   \ 'for': ['javascript', 'javascript.jsc', 'typescript', 'typescriptreact'],
   \ 'do': 'make install'
 \}
@@ -158,6 +163,7 @@ nnoremap <leader>' :copen<cr>
 " terminal
 nnoremap <leader>; :vsp<cr>:terminal<cr>i
 tnoremap <C-d>  <C-\><C-n>
+tnoremap <Esc> <C-\><C-n>
 " Press * to search for the term under the cursor or a visual selection and
 " then press the key below to replace all instances of it in the current files
 nnoremap <leader>r :%s///gI<Left><Left><Left>
@@ -237,9 +243,9 @@ inoremap <silent><expr> <C-Space> coc#refresh()
 inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm() : "\<C-g>u\<cr>\<C-r>=coc#on_enter()\<cr>"
 
 " telescope shortcuts
-nnoremap <leader>gg :lua require('mystuff.telescope').grep_string()<cr>
-nnoremap <leader>ee :lua require('mystuff.telescope').buffers()<cr>
 nnoremap <C-P> :lua require('mystuff.telescope').find_files()<cr>
+" nnoremap <leader>gg :lua require('mystuff.telescope').grep_string()<cr>
+nnoremap <leader>ee :lua require('mystuff.telescope').buffers()<cr>
 nnoremap <leader>fb :lua require('mystuff.telescope').file_browser()<cr>
 nnoremap <leader>ll :lua require('mystuff.telescope').live_grep()<cr>
 nnoremap <leader>gg :lua require('telescope.builtin').grep_string { search = vim.fn.expand("<cword>") }<cr>
