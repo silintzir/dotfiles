@@ -1,5 +1,5 @@
 "----------------------------------------------------------------------------------------------------------------------
-"---------------------------------------------------------------------------------------------------------------------i
+"----------------------------------------------------------------------------------------------------------------------
 " Plugins
 "----------------------------------------------------------------------------------------------------------------------
 "----------------------------------------------------------------------------------------------------------------------
@@ -29,11 +29,14 @@ Plug 'tpope/vim-surround'
 Plug 'matze/vim-move'
 Plug 'jiangmiao/auto-pairs'
 Plug 'machakann/vim-highlightedyank'
-Plug 'airblade/vim-gitgutter'
-Plug 'haya14busa/is.vim'
 Plug 'preservim/tagbar'
 Plug 'bronson/vim-visual-star-search'
+Plug 'haya14busa/is.vim'
+
+" git
 Plug 'tpope/vim-fugitive'
+Plug 'junegunn/gv.vim'
+Plug 'airblade/vim-gitgutter'
 
 Plug 'kyazdani42/nvim-web-devicons'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
@@ -100,6 +103,48 @@ set nrformats=
 " Mappings & Keyboard shortcuts
 "----------------------------------------------------------------------------------------------------------------------
 "----------------------------------------------------------------------------------------------------------------------
+
+" Leader key
+let mapleader = " "
+
+" Better escape
+inoremap jk <esc>
+inoremap kj <esc>
+inoremap <C-c> <esc>
+
+" Treat visual and physical lines the same when navigating with the h,j,k,l physical lines the physical lines the physical lines the physical lines the physical lines the physical lines the physical lines the physical lines the physical lines the physical lines the physical lines the physical lines the physical lines the physical lines the
+noremap j gj
+noremap k gk
+" noremap $ g$
+" noremap 0 g0
+
+" Better deleting
+" protect default register from overwriting - write to the dead register instead for x and d buttons
+nnoremap x "_x
+nnoremap X "_x
+nnoremap <leader>d "_d
+vnoremap <leader>d "_d
+
+" Better yanking
+" keep cursor at the bottom of the visual selection after yanking
+xnoremap y ygv<esc>
+" shift y to copy from the cursor till the end of the line, same as with D and C
+nnoremap Y y$
+" Support yanking to the system clipboard
+nnoremap <leader>y "+y
+vnoremap <leader>y "+y
+
+" Better putting (pasting)
+" prevent selecting and pasting from overwriting what was originally copied
+xnoremap p pgvy
+" GREATEST REMAP EVER !!! visual model paste without ovewriting the default registers
+vnoremap <leader>p "_dP
+
+" insert empty spaces and lines
+noremap <leader><space> i <Esc>
+noremap <leader>o O<Esc>
+
+" ------------ F BUTTONS ------------
 " toggle relative numbers
 noremap <F2> :set invrelativenumber<cr>
 " toggle highlighting of search
@@ -108,100 +153,98 @@ noremap <F3> :set hlsearch!<cr>
 noremap <F4> :GitGutterToggle<cr>
 noremap <F5> :NERDTreeToggle<cr>
 noremap <F6> :TagbarToggle<cr>
-" edit the vimrc
+" edit the vimrc and reload configuration
 noremap <F11> :vsp $MYVIMRC<cr>
-" reload the configuration with F12
 noremap <F12> :source $MYVIMRC<cr>
-" leader key
-let mapleader = " "
 
-" trea visual and actual lines much the same
-" noremap j gj
-" noremap k gk
-" noremap $ g$
-" noremap 0 g0
-
-" quit all
+" Quit vim
 nnoremap <leader>qq :qall!<cr>
-" escape with jk/kj
-inoremap jk <esc>
-inoremap kj <esc>
-" prevent x and X from overriding the clipboard
-nnoremap x "_x
-nnoremap X "_x
-" visual model paste without ovewriting the default registers
-vnoremap <leader>p "_dP
-" shift y to copy from the cursor till the end of the line
-nnoremap Y y$
-" keep cursor at the bottom of the visual selection after yanking
-xnoremap y ygv<esc>
-" prevent selecting and pasting from overwriting what was originally copied
-xnoremap p pgvy
-" clear search highlights with double space
-map <leader>/ :let @/=''<cr>
-" insert empty spaces and lines
-noremap <leader><space> i <Esc>
-noremap <leader>o O<Esc>
+
+" Resizing
+nnoremap <leader>+ :vertical resize +10<CR>
+nnoremap <leader>- :vertical resize -10<CR>
+nnoremap <leader>rp :resize 100<CR>
+
+" ------------ NAVIGATION ------------
 " navigate in buffers while in window with up and oown arrows
 nnoremap <Up> :bn<cr>
 nnoremap <Down> :bp<cr>
 " navigate in windows with left and right arrow
 nnoremap <Left> <C-w>h
 nnoremap <Right> <C-w>l
-" open a new tab
+" open new tab
 nnoremap <C-t> :tabnew<cr>
-" open netrw
-" nnoremap <C-n> :Vexplore<cr>
 " navigate through tabs
 nnoremap <leader>1 1gt
 nnoremap <leader>2 2gt
 nnoremap <leader>3 3gt
 nnoremap <leader>4 4gt
 nnoremap <leader>5 5gt
+
+nnoremap <leader>mr :CocList mru<CR>
+
+" ------------ SEARCHING/REPLACING/RENAMING ------------
+" searches for the occurence of the word under cursor but not in a word match mode like with star (*)*
+nnoremap <leader>bs /<C-R>=escape(expand("<cword>"), "/")<CR><CR>
+" clear search highlights with double space
+nmap <leader>/ :let @/=''<cr>
+" Rename symbol (coc)
+nmap <leader>rns <Plug>(coc-rename)
+" Project wide search (find-in-project)
+nmap <leader>fip :CocSearch <C-r>=expand("<cword>")<cr><cr>
+" Start search and replace
+" Press * to search for the term under the cursor or a visual selection and
+" then press the key below to replace all instances of it in the current files
+nnoremap <leader>rif :%s///gI<Left><Left><Left>
+nnoremap <leader>rifc :%s///gIc<Left><Left><Left><Left>
+" The same as above but instead of acting on the whole file it will
+" be restricted to the previously visually selected range. You can do that
+" by pressing *, visually selecting the range you want it to apply and then
+" press a key below to replace all instances of it in the current selection
+xnoremap <leader>rif :s///gI<Left><Left><Left>
+xnoremap <leader>rifc :s///gIc<Left><Left><Left><Left>
+" Type a replacement term and press . to repeat the replacement again. Useful
+" for replacing a few instances of the term (comparable to multiple cursors).
+nnoremap <silent> s* :let @/='\<'.expand('<cword>').'\>'<CR>cgn
+xnoremap <silent> s* "sy:let @/=@s<CR>cgn
+
+" -------------------------- COC ------------------------------
+" Use K to view documentation for an item in preview window
+" this uses the show_documentation function defined later in this file
+nnoremap <silent> K :call <SID>show_documentation()<cr>
+" go to navigation
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
+" diagnostix
+nmap <silent> [g <Plug>(coc-diagnostic-prev)
+nmap <silent> ]g <Plug>(coc-diagnostic-next)
+nnoremap <silent><nowait> <leader>diag :<C-u>CocList diagnostics<cr>
+" find symbol of current document
+nnoremap <silent><nowait> <leader>out :<C-u>CocList outline<cr>
+
+
+" --------------------- TERMINAL --------------------------
+
+
+" get help for the word under cursor
+nnoremap <leader>?? :h <C-R>=expand("<cword>")<CR><CR>
+
+
+
+nnoremap <leader>u :UndotreeShow<CR>
+
+" open a new tab
+" open netrw
+" nnoremap <C-n> :Vexplore<cr>
 " copen
 nnoremap <leader>' :copen<cr>
 " terminal
 nnoremap <leader>; :vsp<cr>:terminal<cr>i
 tnoremap <C-d>  <C-\><C-n>
 tnoremap <Esc> <C-\><C-n>
-" Press * to search for the term under the cursor or a visual selection and
-" then press the key below to replace all instances of it in the current files
-nnoremap <leader>r :%s///gI<Left><Left><Left>
-nnoremap <leader>rc :%s///gIc<Left><Left><Left><Left>
-" The same as above but instead of acting on the whole file it will
-" be restricted to the previously visually selected range. You can do that
-" by pressing *, visually selecting the range you want it to apply and then
-" press a key below to replace all instances of it in the current selection
-xnoremap <leader>r :s///gI<Left><Left><Left>
-xnoremap <leader>rc :s///gIc<Left><Left><Left><Left>
-" Type a replacement term and press . to repeat the replacement again. Useful
-" for replacing a few instances of the term (comparable to multiple cursors).
-nnoremap <silent> s* :let @/='\<'.expand('<cword>').'\>'<CR>cgn
-xnoremap <silent> s* "sy:let @/=@s<CR>cgn
 
-
-" Conquer of Code (coc.nvim) related mappings
-
-" Project wide search
-nmap <leader>prw :CocSearch <C-r>=expand("<cword>")<cr><cr>
-
-" use [g  and ]g to navigate diagnostics
-" use :CocDiagnostics to get all diagnostics of current buffer in location list
-nmap <silent> [g <Plug>(coc-diagnostic-prev)
-nmap <silent> ]g <Plug>(coc-diagnostic-next)
-
-" go to navigation
-nmap <leader>gd <Plug>(coc-definition)
-nmap <leader>gy <Plug>(coc-type-definition)
-nmap <leader>gi <Plug>(coc-implementation)
-nmap <leader>gr <Plug>(coc-references)
-
-" Use K to view documentation for an item in preview window
-" this uses the show_documentation function defined later in this file
-nnoremap <silent> K :call <SID>show_documentation()<cr>
-
-" Symbol renaming
-nmap <leader>rn <Plug>(coc-rename)
 
 " formatting selected code
 xmap <leader>fmt <Plug>(coc-format-selected)
@@ -217,13 +260,7 @@ nmap <leader>act <Plug>(coc-codeaction)
 " apply auto fix to problem in the current line
 nmap <leader>fix <Plug>(coc-fix-current)
 
-" Mappings for CocList
-" show all diagnostics
-nnoremap <silent><nowait> <leader>diag :<C-u>CocList diagnostics<cr>
-" commands
-nnoremap <silent><nowait> <leader>com :<C-u>CocList commands<cr>
-" find symbol of current document
-nnoremap <silent><nowait> <leader>out :<C-u>CocList outline<cr>
+  " Mappings for CocList
 " search for workspace symbols
 nnoremap <silent><nowait> <leader>sym :<C-u>CocList -I symbols<cr>
 
@@ -244,11 +281,11 @@ inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm() : "\<C-g>u\<cr
 
 " telescope shortcuts
 nnoremap <C-P> :lua require('mystuff.telescope').find_files()<cr>
-" nnoremap <leader>gg :lua require('mystuff.telescope').grep_string()<cr>
+nnoremap <leader>gg :lua require('mystuff.telescope').grep_string()<cr>
 nnoremap <leader>ee :lua require('mystuff.telescope').buffers()<cr>
 nnoremap <leader>fb :lua require('mystuff.telescope').file_browser()<cr>
 nnoremap <leader>ll :lua require('mystuff.telescope').live_grep()<cr>
-nnoremap <leader>gg :lua require('telescope.builtin').grep_string { search = vim.fn.expand("<cword>") }<cr>
+" nnoremap <leader>gg :lua require('telescope.builtin').grep_string { search = vim.fn.expand("<cword>") }<cr>
 nnoremap <leader>sf :NERDTreeFind<cr><c-l>
 nnoremap <leader>rr :lua require('telescope.builtin').registers()<cr>
 nnoremap <leader>hh :lua require('telescope.builtin').help_tags()<cr>
@@ -268,7 +305,6 @@ command! -nargs=? Fold :call CocAction('fold', <f-args>)
 
 " Add `:OR` command to organize imports of the current buffer
 command! -nargs=0 OR :call CocAction('runCommand', 'editor.action.organizeImport')
-
 " set wrap, line break and do now show and invisible characters
 command! -nargs=* Wrap set wrap linebreak nolist
 command! -nargs=* Unwrap set nowrap nolinebreak nolist
@@ -342,10 +378,8 @@ augroup end
 " auto show nerd tree when vim opens
 autocmd VimEnter * NERDTree | wincmd p
 " " prevent other buffers replacing the NERDTree
-" autocmd BufEnter * if bufname('#') =~ 'NERD_tree_\d\+' && bufname('%') !~ 'NERD_tree_\d\+' && winnr('$') > 1 |
-"     \ let buf=bufnr() | buffer# | execute "normal! \<C-W>w" | execute 'buffer'.buf | endif
-" " same nerd tree to oepn on every tab automatically
-" autocmd BufWinEnter * silent NERDTreeMirror
+autocmd BufEnter * if bufname('#') =~ 'NERD_tree_\d\+' && bufname('%') !~ 'NERD_tree_\d\+' && winnr('$') > 1 |
+    \ let buf=bufnr() | buffer# | execute "normal! \<C-W>w" | execute 'buffer'.buf | endif
 
 " change local working directory upon tab creation
 " function! OnTabEnter(path)
@@ -475,5 +509,13 @@ function! s:check_back_space() abort
   let col = col('.') - 1
   return !col || getline('.')[col - 1] =~# '\s'
 endfunction
+
+" custom commands
+fun! EmptyRegisters()
+  let regs = split('abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789/-"', '\zs')
+  for r in regs
+    call setreg(r, [])
+  endfor
+endfun
 
 echo "Vim configuration reloaded!!!"

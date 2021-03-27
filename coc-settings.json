@@ -1,4 +1,8 @@
 {
+  "list.height": 25,
+  "list.alignColumns": true,
+  "list.source.files.args": ["--hidden"],
+  "list.source.mru.maxLength": 20,
   "coc.preferences.colorSupport": true,
   "coc.preferences.formatOnSaveFiletypes": [
     "jsonc",
@@ -18,5 +22,13 @@
   "tsserver.enableJavascript": false,
   "tsserver.enable": true,
   "lua.enable": true,
-  "Lua.diagnostics.globals": ["hs", "vim"]
+  "Lua.diagnostics.globals": ["hs", "vim"],
+  "prettier.printWidth": 120,
+  "languageserver": {
+    "graphql": {
+      "command": "graphql-lsp",
+      "args": ["server", "-m", "stream"],
+      "filetypes": ["typescript", "typescriptreact", "graphql"]
+    }
+  }
 }

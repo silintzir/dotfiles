@@ -1,3 +1,8 @@
+##### Resizing windows
+
+`^w=` to resize all windows to equal
+
+
 ##### The `g` command
 
 `gv`: reselects text according to the last visual selection

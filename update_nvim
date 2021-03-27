@@ -1,0 +1,10 @@
+cd $HOME
+
+rm -rf nvim-macos.tar.gz
+
+wget https://github.com/neovim/neovim/releases/download/nightly/nvim-macos.tar.gz
+
+tar xzvf nvim-macos.tar.gz
+
+rm -rf nvim-macos.tar.gz
+
