@@ -18,7 +18,7 @@ Plug 'nvim-telescope/telescope-fzy-native.nvim'
 
 Plug 'kana/vim-textobj-user'
 Plug 'kana/vim-textobj-entire'
-Plug 'vim-airline/vim-airline'
+" Plug 'vim-airline/vim-airline'
 Plug 'preservim/nerdtree'
 Plug 'gruvbox-community/gruvbox'
 Plug 'mhinz/vim-startify'
@@ -413,7 +413,7 @@ highlight netrwDir guifg=#5eacd3
 highlight qfFileName guifg=#aed75f
 
 " netrw
-let g:netrw_browse_split = 0
+let g:netrw_browse_split = 4
 let g:netrw_banner = 0
 let g:netrw_winsize = 20
 let g:netrw_localrmdir = 'rm -r'
