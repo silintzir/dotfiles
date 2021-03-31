@@ -7,6 +7,7 @@ export XDG_CONFIG_HOME=$HOME/.config
 export XDG_DATA_HOME=$HOME/.local/share
 export VIMRC=$HOME/.config/nvim/init.vim
 export npm_config_prefix=~/.node_modules
+export PATH="/usr/local/opt/ruby/bin:$PATH"
 
 # needed by perl
 export LC_CTYPE=en_US.UTF-8
