@@ -62,6 +62,9 @@ return require("packer").startup(
         -- git
         use {"tpope/vim-fugitive"}
 
+        -- markdown
+        use {"iamcco/markdown-preview.nvim"}
+
         -- editor
         use {
             "mhartington/formatter.nvim",

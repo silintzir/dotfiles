@@ -30,5 +30,8 @@
       "args": ["server", "-m", "stream"],
       "filetypes": ["typescript", "typescriptreact", "graphql"]
     }
+  },
+  "markdownlint.config": {
+    "line_length": false
   }
 }

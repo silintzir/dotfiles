@@ -12,6 +12,7 @@ vim.o.mouse = "a"
 vim.o.completeopt = "menuone,noinsert,noselect"
 vim.o.shortmess = "filnxtToOFc"
 vim.o.hidden = true
+vim.o.ignorecase = true
 vim.o.smartcase = true
 vim.o.joinspaces = false
 vim.o.scrolloff = 5
@@ -103,9 +104,12 @@ map("n", "k", "gk")
 map("n", "H", "^")
 map("o", "H", "^")
 map("x", "H", "^")
-map("n", "L", "$")
-map("o", "L", "$")
-map("x", "L", "$")
+map("n", "L", "g_")
+map("o", "L", "g_")
+map("x", "L", "g_")
+
+-- insert mode commands editing
+map("i", "<C-l>", "<Del>") -- forward delete in insert mode
 
 -- editing files
 map("n", "<Leader>ee", ":edit <C-r>=expand('%:h')<CR>/")
@@ -132,12 +136,13 @@ map("v", "<leader>p", '"_dp') -- visual mode paste without overwriting the defau
 map("n", "<F2>", ":set invrelativenumber<CR>")
 map("n", "<F3>", ":set hlsearch!<CR>")
 map("n", "<F5>", ":NERDTreeToggle<CR>")
-map("n", "<F11>", ":source %<CR>")
+map("n", "<F11>", ":source %<CR>", {silent = true, noremap = true})
 map("n", "<F12>", ":luafile $VIMRC<CR>")
 
 -- Navigation in quickfix
 map("n", "<C-k>", ":CocPrev<CR>")
 map("n", "<C-j>", ":CocNext<CR>")
+map("n", "<C-;>", ":CocListResume<CR>")
 
 -- Misc
 map("n", "<leader>qq", ":qall!<CR>")
