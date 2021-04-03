@@ -53,7 +53,7 @@ font:
     # style: Italic
 
   # Point size of the font
-  size: 16.0
+  size: 20.0
 
   # Offset is the extra space around each character. offset.y can be thought of
   # as modifying the linespacing, and offset.x as modifying the letter spacing.
@@ -248,6 +248,9 @@ key_bindings:
   - { key: Back,     mods: Alt,     chars: "\x1b\x7f"                    }
   - { key: Insert,                  chars: "\x1b[2~"                     }
   - { key: Delete,                  chars: "\x1b[3~"                     }
+    # needed to remap <Ctrl-6> in vim to switch to alternate buffer
+  - { key: Key6,     mods: Control, chars: "\x1e"                        }
+
 
   # shortcuts for tmux. the leader key is control-b (0x02)
   - { key: W,        mods: Command,       chars: "\x02&"                 }  # close tab (kill)
