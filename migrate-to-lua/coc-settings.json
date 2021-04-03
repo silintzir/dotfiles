@@ -1,0 +1,34 @@
+{
+  "list.height": 25,
+  "list.alignColumns": true,
+  "list.source.files.args": ["--hidden"],
+  "list.source.mru.maxLength": 20,
+  "coc.preferences.colorSupport": true,
+  "coc.preferences.formatOnSaveFiletypes": [
+    "jsonc",
+    "javascript",
+    "html",
+    "javascriptreact",
+    "typescript",
+    "typescriptreact",
+    "css",
+    "json",
+    "lua"
+  ],
+  "eslint.alwaysShowStatus": true,
+  "eslint.autoFixOnSave": true,
+  "html.filetypes": ["html", "ejs", "handlebars"],
+  "html.format.indentInnerHtml": true,
+  "tsserver.enableJavascript": false,
+  "tsserver.enable": true,
+  "lua.enable": true,
+  "Lua.diagnostics.globals": ["hs", "use", "vim"],
+  "prettier.printWidth": 120,
+  "languageserver": {
+    "graphql": {
+      "command": "graphql-lsp",
+      "args": ["server", "-m", "stream"],
+      "filetypes": ["typescript", "typescriptreact", "graphql"]
+    }
+  }
+}

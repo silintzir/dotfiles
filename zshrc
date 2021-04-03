@@ -5,7 +5,7 @@ export EDITOR=/usr/bin/nvim
 export ZSH=$HOME/.oh-my-zsh
 export XDG_CONFIG_HOME=$HOME/.config
 export XDG_DATA_HOME=$HOME/.local/share
-export VIMRC=$HOME/.config/nvim/init.vim
+export VIMRC=$HOME/.config/nvim/init.lua
 export npm_config_prefix=~/.node_modules
 export PATH="/usr/local/opt/ruby/bin:$PATH"
 

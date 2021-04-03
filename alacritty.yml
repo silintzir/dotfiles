@@ -24,8 +24,8 @@ window:
   # Units are physical pixels; this is not DPI aware.
   # (change requires restart)
   padding:
-    x: 4
-    y: 4
+    x: 0
+    y: 0
 
   decorations: full
 
@@ -74,7 +74,7 @@ font:
   use_thin_strokes: false
 
 # Should display the render timer
-debug.render_timer: false
+debug.render_timer: true
 
 # Colors (Gruvbox Material Dark Medium)
 # colors:
