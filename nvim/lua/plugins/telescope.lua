@@ -197,7 +197,7 @@ _G.FindGit = function()
     )
 end
 
-vim.api.nvim_set_keymap("n", "<C-P>", ":lua FindFile()<CR>", {silent = true, noremap = true})
+vim.api.nvim_set_keymap("n", "<C-p>", ":lua FindFile()<CR>", {silent = true, noremap = true})
 vim.api.nvim_set_keymap("n", "<leader>ff", ":lua FindBuffer()<CR>", {silent = true, noremap = true})
 vim.api.nvim_set_keymap("n", "<leader>fg", ":lua FindString()<CR>", {silent = true, noremap = true})
 vim.api.nvim_set_keymap("n", "<leader>fl", ":lua FindLive()<CR>", {silent = true, noremap = true})

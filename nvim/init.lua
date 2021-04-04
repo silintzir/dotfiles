@@ -181,4 +181,4 @@ require("plugins.netrw")
 
 -- this is the file that loads coc.nvim
 vim.cmd([[source ~/.config/nvim/coc.vim]])
-vim.cmd([[source ~/.config/nvim/playground.vim]])
+-- vim.cmd([[source ~/.config/nvim/playground.vim]])

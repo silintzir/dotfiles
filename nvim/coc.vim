@@ -29,7 +29,7 @@ nmap <silent>             [g              <Plug>(coc-diagnostic-prev)
 nmap <silent>             ]g              <Plug>(coc-diagnostic-next)
 nmap <silent>             <leader>gd      <Plug>(coc-definition)
 nmap <silent>             <leader>gr      <Plug>(coc-references)
-" nmap <silent>             <leader>gi      <Plug>(coc-implementation)
+nmap <silent>             <leader>gi      <Plug>(coc-implementation)
 nmap                      <leader>rn      <Plug>(coc-rename)
 nmap                      <leader>fip     :CocSearch <C-r>=expand("<cword>")<CR><CR>
 nmap                      <leader>sym     :CocList symbols<CR>
