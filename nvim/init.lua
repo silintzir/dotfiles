@@ -21,7 +21,7 @@ vim.o.sidescrolloff = 8
 vim.o.splitbelow = true
 vim.o.splitright = true
 vim.o.termguicolors = true
-vim.o.cmdheight = 1
+vim.o.cmdheight = 2
 vim.o.updatetime = 50
 vim.o.undodir = "~/.vim/undodir"
 vim.o.writebackup = false -- suggested by coc.nvim
@@ -62,6 +62,13 @@ utils.exec(
   augroup END
 ]]
 )
+
+utils.exec([[
+augroup THE_PRIMEAGEN
+  autocmd!
+  autocmd BufWritePre *.md %s/\s\+$//e
+augroup END
+]])
 
 -- cursor line only on active buffer
 utils.exec(
