@@ -34,5 +34,29 @@
   "markdownlint.config": {
     "line_length": false
   },
-  "Lua.diagnostics.enable": false
+  "Lua.diagnostics.enable": false,
+  /** explorer presets */
+  "explorer.activeMode": false,
+  "explorer.position": "floating",
+  "explorer.quitOnOpen": true,
+  "explorer.floating.width": 120,
+  "explorer.floating.height": 50,
+  "explorer.openAction.strategy": "sourceWindow",
+  "explorer.presets": {
+    ".vim": {
+      "root-uri": "~/.config/nvim",
+      "sources": [{ "name": "file", "expand": true }]
+    },
+    "sources": {
+      "sources": [{ "name": "file", "expand": true }]
+    },
+    "buffers": {
+      "sources": [{ "name": "buffer", "expand": true }]
+    }
+  },
+  "explorer.floating.border.title": "Explore files",
+  "explorer.icon.enableNerdfont": true,
+  "explorer.file.showHiddenFiles": true,
+  "explorer.floating.hideOnCocList": true,
+  "explorer.file.autoReveal": true
 }

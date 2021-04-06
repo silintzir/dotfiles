@@ -13,25 +13,6 @@ function! s:check_back_space() abort
   return !col || getline('.')[col - 1]  =~# '\s'
 endfunction
 
-let g:coc_explorer_global_presets = {
-  \ '.vim': {
-  \   'position': 'floating',
-  \   'floating-width': 100,
-  \   'root-uri': '~/.config/nvim',
-  \   'quit-on-open': v:true
-  \ },
-  \ 'tab': {
-  \   'position': 'tab',
-  \   'quit-on-open': v:true
-  \ },
-  \ 'floating': {
-  \   'position': 'floating',
-  \   'floating-width': 120,
-  \   'floating-height': 50,
-  \   'open-action-strategy': 'sourceWindow',
-  \ },
-  \ }
-
 " mappings 
 nnoremap <silent>         K               :call <SID>show_documentation()<CR>
 inoremap <silent><expr>   <c-space>       coc#refresh()
@@ -48,6 +29,7 @@ nmap                      <leader>fip     :CocSearch <C-r>=expand("<cword>")<CR>
 nmap                      <leader>sym     :CocList symbols<CR>
 nmap                      <leader>mcol    :call CocAction('pickColor')<CR>
 
-nmap                      <C-t>           :CocCommand explorer --preset floating<CR>
-nmap                      <leader>ed      :CocCommand explorer --preset .vim<CR>
-nmap                      <leader>ee      :CocList mru<CR>
+nmap <silent>             <C-t>           :CocCommand explorer --preset sources<CR>
+nmap <silent>             <leader>eb      :CocCommand explorer --preset buffers<CR>
+nmap <silent>             <leader>ed      :CocCommand explorer --preset .vim<CR>
+nmap <silent>             <leader>ee      :CocList mru<CR>
