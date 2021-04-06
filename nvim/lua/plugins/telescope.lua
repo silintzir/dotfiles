@@ -11,7 +11,7 @@ local center_list =
         results_title = false,
         results_height = 20,
         previewer = false,
-        color_devicons = false
+        color_devicons = true
     }
 )
 

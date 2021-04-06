@@ -24,6 +24,8 @@ return require("packer").startup(
             end
         }
 
+        use {"romgrk/barbar.nvim"}
+
         -- visual star search
         use {"bronson/vim-visual-star-search"}
 
