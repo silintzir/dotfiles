@@ -33,5 +33,6 @@
   },
   "markdownlint.config": {
     "line_length": false
-  }
+  },
+  "Lua.diagnostics.enable": false
 }

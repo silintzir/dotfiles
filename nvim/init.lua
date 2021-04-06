@@ -144,7 +144,7 @@ map("n", "<F2>", ":set invrelativenumber<CR>")
 map("n", "<F3>", ":set hlsearch!<CR>")
 map("n", "<F5>", ":NERDTreeToggle<CR>")
 map("n", "<F11>", ":source %<CR>", {silent = true, noremap = true})
-map("n", "<F12>", ":luafile $VIMRC<CR>")
+map("n", "<F12>", ":luafile %<CR>")
 
 -- Navigation in quickfix
 map("n", "<C-k>", ":CocPrev<CR>")
