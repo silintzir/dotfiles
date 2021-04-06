@@ -15,8 +15,21 @@ endfunction
 
 let g:coc_explorer_global_presets = {
   \ '.vim': {
-  \   'root-uri': '~/.config/nvim'
-  \ }
+  \   'position': 'floating',
+  \   'floating-width': 100,
+  \   'root-uri': '~/.config/nvim',
+  \   'quit-on-open': v:true
+  \ },
+  \ 'tab': {
+  \   'position': 'tab',
+  \   'quit-on-open': v:true
+  \ },
+  \ 'floating': {
+  \   'position': 'floating',
+  \   'floating-width': 120,
+  \   'floating-height': 50,
+  \   'open-action-strategy': 'sourceWindow',
+  \ },
   \ }
 
 " mappings 
@@ -35,6 +48,6 @@ nmap                      <leader>fip     :CocSearch <C-r>=expand("<cword>")<CR>
 nmap                      <leader>sym     :CocList symbols<CR>
 nmap                      <leader>mcol    :call CocAction('pickColor')<CR>
 
-nmap                      <C-t>           :CocCommand explorer <CR>
+nmap                      <C-t>           :CocCommand explorer --preset floating<CR>
 nmap                      <leader>ed      :CocCommand explorer --preset .vim<CR>
 nmap                      <leader>ee      :CocList mru<CR>
