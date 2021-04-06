@@ -68,6 +68,7 @@ return require("packer").startup(
         use {"iamcco/markdown-preview.nvim"}
 
         -- editor
+        use {"justinmk/vim-sneak"}
         use {
             "mhartington/formatter.nvim",
             config = function()
