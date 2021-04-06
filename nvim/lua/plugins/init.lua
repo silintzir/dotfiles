@@ -81,7 +81,7 @@ return require("packer").startup(
             end
         }
         use {
-            "editorconfig/editorconfig.vim",
+            "editorconfig/editorconfig-vim",
             config = function()
                 require("plugins.editorconfig")
             end
