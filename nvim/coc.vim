@@ -33,3 +33,5 @@ nmap <silent>             <C-t>           :CocCommand explorer --preset sources<
 nmap <silent>             <leader>eb      :CocCommand explorer --preset buffers<CR>
 nmap <silent>             <leader>ed      :CocCommand explorer --preset .vim<CR>
 nmap <silent>             <leader>ee      :CocList mru<CR>
+
+nmap <silent>             <leader>ac      <Plug>(coc-codeaction)

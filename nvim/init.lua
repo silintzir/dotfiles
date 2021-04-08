@@ -75,7 +75,7 @@ utils.exec(
     [[
   augroup CursorLine
     autocmd!
-    autocmd VimEnter,WinEnter,BufWinEnter * setlocal cursorline
+    autocmd VimEnter,WinEnter,BufWinEnter * setlocal cursorline cmdheight=2
     autocmd WinLeave * setlocal nocursorline
   augroup END
 ]]
@@ -122,6 +122,7 @@ map("i", "<C-l>", "<Del>") -- forward delete in insert mode
 map("n", "<Leader>ee", ":edit <C-r>=expand('%:h')<CR>/")
 map("n", "<Leader>ev", ":vsplit <C-r>=expand('%:h')<CR>/")
 map("n", "<Leader>es", ":split <C-r>=expand('%:h')<CR>/")
+map("n", "<leader><space>", "O<esc>")
 
 -- better deletions
 map("n", "x", '"_x')
@@ -143,6 +144,7 @@ map("v", "<leader>p", '"_dp') -- visual mode paste without overwriting the defau
 map("n", "<F2>", ":set invrelativenumber<CR>")
 map("n", "<F3>", ":set hlsearch!<CR>")
 map("n", "<F5>", ":NERDTreeToggle<CR>")
+map("n", "<F10>", ":!sh postman.sh | jq<CR>", {silent = true, noremap = true})
 map("n", "<F11>", ":source %<CR>", {silent = true, noremap = true})
 map("n", "<F12>", ":luafile %<CR>")
 

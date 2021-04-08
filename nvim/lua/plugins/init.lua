@@ -24,6 +24,7 @@ return require("packer").startup(
             end
         }
 
+        -- tabline
         use {"romgrk/barbar.nvim"}
 
         -- visual star search
@@ -66,6 +67,10 @@ return require("packer").startup(
 
         -- markdown
         use {"iamcco/markdown-preview.nvim"}
+
+        -- snippets
+        use {"SirVer/ultisnips"}
+        use {"honza/vim-snippets"}
 
         -- editor
         use {"justinmk/vim-sneak"}
