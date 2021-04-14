@@ -73,6 +73,7 @@ return require("packer").startup(
         use {"honza/vim-snippets"}
 
         -- editor
+        use {"kkoomen/vim-doge"}
         use {"justinmk/vim-sneak"}
         use {
             "mhartington/formatter.nvim",

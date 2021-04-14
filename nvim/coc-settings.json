@@ -4,6 +4,7 @@
   "list.source.files.args": ["--hidden"],
   "list.source.mru.maxLength": 20,
   "coc.preferences.colorSupport": true,
+  "signature.enable": false,
   "coc.preferences.formatOnSaveFiletypes": [
     "jsonc",
     "javascript",
@@ -19,7 +20,8 @@
   "eslint.autoFixOnSave": true,
   "html.filetypes": ["html", "ejs", "handlebars"],
   "html.format.indentInnerHtml": true,
-  "tsserver.enableJavascript": false,
+  /** tsserver */
+  "tsserver.enableJavascript": true,
   "tsserver.enable": true,
   "lua.enable": true,
   "Lua.diagnostics.globals": ["hs", "use", "vim"],
@@ -28,7 +30,7 @@
     "graphql": {
       "command": "graphql-lsp",
       "args": ["server", "-m", "stream"],
-      "filetypes": ["typescript", "typescriptreact", "graphql"]
+      "filetypes": ["typescript", "typescriptreact", "javascript", "javascriptreact", "graphql"]
     }
   },
   "markdownlint.config": {

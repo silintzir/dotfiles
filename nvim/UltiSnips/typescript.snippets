@@ -1,6 +1,10 @@
 # console.log()
-snippet clog
-console.log(${1:thi sis someint});$0
+snippet clog "console.log()"
+console.log($1);$0
+endsnippet
+
+snippet cit 
+console.log("The value of variable " + $1 + ": " + $2);$0
 endsnippet
 
 # try catch block
