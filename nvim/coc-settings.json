@@ -14,7 +14,8 @@
     "typescriptreact",
     "css",
     "json",
-    "lua"
+    "lua",
+    "php"
   ],
   "eslint.alwaysShowStatus": true,
   "eslint.autoFixOnSave": true,
@@ -23,6 +24,7 @@
   /** tsserver */
   "tsserver.enableJavascript": true,
   "tsserver.enable": true,
+  "tsserver.formatOnType": true,
   "lua.enable": true,
   "Lua.diagnostics.globals": ["hs", "use", "vim"],
   "prettier.printWidth": 120,
@@ -60,5 +62,10 @@
   "explorer.icon.enableNerdfont": true,
   "explorer.file.showHiddenFiles": true,
   "explorer.floating.hideOnCocList": true,
-  "explorer.file.autoReveal": true
+  "explorer.file.autoReveal": true,
+  "explorer.keyMappings.global": {
+    "s": "open:vsplit"
+  },
+  "intelephense.files.associations": ["*.php", "*.phtml", "*.go"],
+  "intelephense.diagnostics.deprecated": false
 }

@@ -43,6 +43,7 @@ opt("w", "colorcolumn", "120")
 opt("w", "signcolumn", "yes")
 opt("w", "wrap", false)
 opt("w", "scroll", 15)
+opt("w", "cursorline", true)
 
 -- (auto)commands
 vim.cmd("command! Bd %bd")
@@ -71,15 +72,15 @@ augroup END
 ]])
 
 -- cursor line only on active buffer
-utils.exec(
-    [[
-  augroup CursorLine
-    autocmd!
-    autocmd VimEnter,WinEnter,BufWinEnter * setlocal cursorline cmdheight=2
-    autocmd WinLeave * setlocal nocursorline
-  augroup END
-]]
-)
+-- utils.exec(
+--     [[
+--   augroup CursorLine
+--     autocmd!
+--     autocmd VimEnter,WinEnter,BufWinEnter * setlocal cursorline cmdheight=2
+--     autocmd WinLeave * setlocal nocursorline
+--   augroup END
+-- ]]
+-- )
 
 -- automatically create non-existent directories on :e
 utils.exec(
@@ -100,7 +101,6 @@ utils.exec([[
 ]])
 
 -- escape with j/k
-map("i", "jk", "<Esc>")
 map("i", "kj", "<Esc>")
 
 -- treat visual and physical lines the same when navigating
@@ -144,7 +144,7 @@ map("v", "<leader>p", '"_dp') -- visual mode paste without overwriting the defau
 map("n", "<F2>", ":set invrelativenumber<CR>")
 map("n", "<F3>", ":set hlsearch!<CR>")
 map("n", "<F5>", ":NERDTreeToggle<CR>")
-map("n", "<F10>", ":!sh postman.sh | jq<CR>", {silent = true, noremap = true})
+map("n", "<F10>", ":set cmdheight=10 | !sh ./apps/erp/postman.sh | jq<CR>", {silent = true, noremap = true})
 map("n", "<F11>", ":source %<CR>", {silent = true, noremap = true})
 map("n", "<F12>", ":luafile %<CR>")
 
@@ -155,7 +155,7 @@ map("n", "<C-;>", ":CocListResume<CR>")
 
 -- Misc
 map("n", "<leader>qq", ":qall!<CR>")
-map("n", "<leader>xx", ":bd<CR>")
+map("n", "<leader>xx", ":bd!<CR>")
 map("n", "<leader>??", ':h <C-R>=expand("<cword>")<CR><CR>')
 map("n", "<leader>=", ":vertical resize +10<CR>")
 map("n", "<leader>-", ":vertical resize -10<CR>")

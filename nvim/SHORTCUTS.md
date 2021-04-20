@@ -27,6 +27,8 @@ Insert mode shortcuts
   - by using register `=` we switch to command line and execute a mathematical calculation or any other command like `system('ls')` and put the result of the exepression in the text
 - `<CTRL-n`: triggers auto complete
 - `<CTRL-o`: activates insert sub-mode where a command may be executed
+- `<CTRL-a`: increments a number by 1. Prefix with number to increment by it.
+- `<CTRL-x`: decrements a number by 1. Prefix with number to decrement by it.
 
 Marks
 ------------------
@@ -49,4 +51,3 @@ Registers
   - `":` has the last command executed
   - `"/` has the last search text searched with `/`, `?`, `*`, `#`
   - `"+` is the system clipboard and can be used to copy/paste outside vim
-

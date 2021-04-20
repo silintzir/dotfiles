@@ -24,5 +24,5 @@ nnoremap <silent> <leader>7 :BufferGoto 7<CR>
 nnoremap <silent> <leader>8 :BufferGoto 8<CR>
 nnoremap <silent> <leader>9 :BufferGoto 9<CR>
 
-nnoremap <silent> <leader>0 :BufferClose<CR>
+nnoremap <silent> <leader>0 :BufferCloseAllButCurrent<CR>
 nnoremap <silent> <leader>b :BufferPick<CR>
