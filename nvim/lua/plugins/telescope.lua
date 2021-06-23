@@ -8,6 +8,7 @@ local center_list =
     require "telescope.themes".get_dropdown(
     {
         width = 0.5,
+        winblend = 10,
         results_title = false,
         results_height = 20,
         previewer = false,

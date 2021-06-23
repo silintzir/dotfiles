@@ -15,7 +15,7 @@
     "css",
     "json",
     "lua",
-    "php"
+    "prisma"
   ],
   "eslint.alwaysShowStatus": true,
   "eslint.autoFixOnSave": true,

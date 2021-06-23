@@ -115,6 +115,7 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="nvim ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 alias sshreal="ssh silintzir@pheidippides.mwebconcepts.com -p 30000"
+alias sshdev="ssh silintzir@archimedes.mwebconcepts.com -p 30000"
 alias ls="exa --long --binary --header --all"
 alias cat="bat"
 alias vim="$HOME/nvim-osx64/bin/nvim"

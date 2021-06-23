@@ -62,6 +62,11 @@ return require("packer").startup(
             end
         }
 
+        -- prisma
+        use {
+            "pantharshit00/vim-prisma"
+        }
+
         -- git
         use {"tpope/vim-fugitive"}
 
