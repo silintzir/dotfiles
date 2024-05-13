@@ -21,6 +21,11 @@ o.breakindent = true
 
 -- save undo history
 o.undofile = true
+o.swapfile = false
+
+-- no hidden buffers - unload
+o.hidden = true
+o.swapfile = false
 
 -- case insensitive search unless capital letters are used
 o.ignorecase = true
@@ -52,6 +57,3 @@ o.scrolloff = 10
 
 -- set highlight on search. a keymap allow to clear highlights when escape is used in normal mode
 o.hlsearch = true
-
--- no hidden buffers - unload
-o.hidden = false
