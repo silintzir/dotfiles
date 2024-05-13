@@ -74,3 +74,8 @@ set({ 'x', 'o' }, 'S', '<Plug>(leap-backward)')
 set('n', '<leader>tc', '<cmd>ColorizerToggle<cr>', { desc = '[T]oggle [C]olorizer' })
 set('n', '<leader>tr', '<cmd>lua ToggleRelativeNumbers()<cr>', { desc = '[T]oggle [R]elative numbers' })
 set('n', '<leader>tw', '<cmd>lua ToggleWrap()<cr>', { desc = '[T]oggle [W]rap' })
+
+set('n', '<C-n>', function()
+  vim.cmd 'Neotree toggle'
+  vim.cmd 'wincmd ='
+end, { desc = '[N]eotree toggle ' })

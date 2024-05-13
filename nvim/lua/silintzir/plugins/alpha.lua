@@ -20,7 +20,7 @@ return {
     -- Set menu
     dashboard.section.buttons.val = {
       dashboard.button('e', '  > New File', '<cmd>ene<CR>'),
-      dashboard.button('\\', '  > Toggle file explorer', '<cmd>Neotree toggle<CR>'),
+      dashboard.button('<C-N>', '  > Toggle file explorer', '<cmd>Neotree toggle<CR>'),
       dashboard.button('SPC sf', '󰱼  > Find File', '<cmd>Telescope find_files<CR>'),
       dashboard.button('SPC sg', '  > Find Word', '<cmd>Telescope live_grep<CR>'),
       dashboard.button('SPC wR', '󰁯  > Restore Session For Current Directory', '<cmd>SessionRestore<CR>'),

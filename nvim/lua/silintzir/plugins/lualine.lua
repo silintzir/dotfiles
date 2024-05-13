@@ -36,6 +36,18 @@ return {
             icon = ' ',
             color = { fg = '#ff9e64' },
           },
+          {
+
+            function()
+              local linters = require('lint').get_running()
+              if #linters == 0 then
+                return ''
+              end
+              return table.concat(linters, ' ~ ')
+            end,
+            icon = '󱉶 ',
+            color = { fg = '#ff9e64' },
+          },
           'filetype',
         },
       },

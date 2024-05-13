@@ -18,6 +18,7 @@ return {
             autoselect_one = true,
             -- filter using buffer options
             bo = {
+              -- javascript = { { 'prettierd', 'prettier' } },
               -- if the file type is one of following, the window will be ignored
               filetype = { 'neo-tree', 'neo-tree-popup', 'notify' },
               -- if the buffer type is one of following, the window will be ignored
@@ -45,7 +46,7 @@ return {
       },
       window = {
         mappings = {
-          ['\\'] = 'close_window',
+          -- ['\\'] = 'close_window',
           ['l'] = 'open',
           ['h'] = 'close_node',
         },
