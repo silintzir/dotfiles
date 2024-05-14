@@ -144,6 +144,8 @@ return {
         },
       },
       tsserver = {},
+      svelte = {},
+      tailwindcss = {},
     }
 
     -- Ensure the servers and tools above are installed
