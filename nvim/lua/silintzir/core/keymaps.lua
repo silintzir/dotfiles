@@ -9,15 +9,15 @@ set({ 'n', 'i' }, '<C-s>', '<esc>:w!<cr>', common)
 
 -- close buffer
 set('n', '<leader>x', '<cmd>BufDel<cr>', { desc = 'Buffer close' })
+set('n', '<leader>q', '<cmd>q!<cr>', { desc = 'Window close' })
 
 -- clear highlight from search on escape when in normal mode
-set('n', '<esc>', ':nohlsearch<cr>')
+set('n', '<esc>', ':nohlsearch<cr>', { silent = true })
 
 -- Diagnostic keymaps
 set('n', '[d', vim.diagnostic.goto_prev, { desc = 'Go to previous [D]iagnostic message' })
 set('n', ']d', vim.diagnostic.goto_next, { desc = 'Go to next [D]iagnostic message' })
-set('n', '<leader>e', vim.diagnostic.open_float, { desc = 'Show diagnostic [E]rror messages' })
-set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagnostic [Q]uickfix list' })
+set('n', 'gl', vim.diagnostic.open_float, { desc = 'Show diagnostic' })
 
 -- Keybinds to make split navigation easier.
 -- Use CTRL+<hjkl> to switch between windows
@@ -75,7 +75,7 @@ set('n', '<leader>tc', '<cmd>ColorizerToggle<cr>', { desc = '[T]oggle [C]olorize
 set('n', '<leader>tr', '<cmd>lua ToggleRelativeNumbers()<cr>', { desc = '[T]oggle [R]elative numbers' })
 set('n', '<leader>tw', '<cmd>lua ToggleWrap()<cr>', { desc = '[T]oggle [W]rap' })
 
-set('n', '<C-n>', function()
+set('n', '<leader>e', function()
   vim.cmd 'Neotree toggle'
   vim.cmd 'wincmd ='
 end, { desc = '[N]eotree toggle ' })
