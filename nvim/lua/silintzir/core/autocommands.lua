@@ -11,3 +11,18 @@ vim.api.nvim_create_autocmd('TextYankPost', {
     vim.highlight.on_yank()
   end,
 })
+
+-- Define an autocommand in Lua to set filetype to html for all .ejs files
+vim.api.nvim_create_autocmd({ 'BufRead', 'BufNewFile' }, {
+  pattern = '*.ejs',
+  callback = function()
+    vim.bo.filetype = 'html'
+  end,
+})
+-- Define an autocommand in Lua to set filetype to html for all .ejs files
+vim.api.nvim_create_autocmd({ 'BufRead', 'BufNewFile' }, {
+  pattern = '*.env*',
+  callback = function()
+    vim.bo.filetype = 'bash'
+  end,
+})
