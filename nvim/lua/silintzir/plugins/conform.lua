@@ -31,8 +31,10 @@ return {
       javascriptreact = { 'prettier' },
       css = { 'prettier' },
       json = { 'prettier' },
+      jsonc = { 'prettier' },
       ejs = { 'prettier' },
       html = { 'prettier' },
+      markdown = { 'prettier' },
     },
   },
 }
