@@ -45,5 +45,5 @@
   "tokyonight.nvim": { "branch": "main", "commit": "e58f652cccd0baf337f23d2de0d6cd221c3b685b" },
   "trouble.nvim": { "branch": "main", "commit": "f4eeadc8ab5b9558797820707e3ccdf3e1559838" },
   "vim-sleuth": { "branch": "master", "commit": "1cc4557420f215d02c4d2645a748a816c220e99b" },
-  "which-key.nvim": { "branch": "main", "commit": "a363e8e50ab8cd265efb34c729b4cf0fc0b7ea6d" }
+  "which-key.nvim": { "branch": "main", "commit": "60688872f4ecc552a5e2bcbd01e7629a155f377f" }
 }
