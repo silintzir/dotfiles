@@ -62,8 +62,8 @@ set('v', '<', '<gv', common)
 set('v', '>', '>gv', common)
 
 -- replace/rename
-set('n', 'r*', ":let @/='\\<'.expand('<cword>').'\\>'<CR>cgn", { desc = '[R]eplace word under cursor' })
-set('v', 'r*', '"sy:let @/=@s<CR>cgn', { desc = '[R]eplace selection' })
+set('n', '<leader>*', ":let @/='\\<'.expand('<cword>').'\\>'<CR>cgn", { desc = '[R]eplace word under cursor' })
+set('v', '<leader>*', '"sy:let @/=@s<CR>cgn', { desc = '[R]eplace selection' })
 
 -- leap.nvim
 set('n', 's', '<Plug>(leap)')
