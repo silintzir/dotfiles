@@ -3,6 +3,10 @@ local o = vim.o
 -- leader key
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
+vim.g.editorconfig = true
+
+o.fixendofline = true
+o.fileformat = 'unix'
 
 -- show numbers
 o.number = true
