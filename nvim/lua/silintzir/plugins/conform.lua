@@ -29,6 +29,7 @@ return {
       javascript = { 'prettierd', stop_after_first = true },
       javascriptreact = { 'prettierd', stop_after_first = true },
       typescriptreact = { 'prettierd', stop_after_first = true },
+      svelte = { 'prettierd', stop_after_first = true },
       css = { 'prettierd', stop_after_first = true },
       json = { 'prettierd', stop_after_first = true },
       jsonc = { 'prettierd', stop_after_first = true },

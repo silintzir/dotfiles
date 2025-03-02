@@ -49,6 +49,10 @@ set('n', 'j', 'gj', common)
 set('n', 'k', 'gk', common)
 set('n', '$', 'g$', common)
 set('n', '0', 'g0', common)
+set('v', 'j', 'gj', common)
+set('v', 'k', 'gk', common)
+set('v', '$', 'g$', common)
+set('v', '0', 'g0', common)
 
 -- better yanking
 set('n', 'Y', 'y$', common)

@@ -25,6 +25,7 @@ return {
       'graphql',
       'prisma',
       'svelte',
+      -- 'tailwindcss',
       'yaml',
       'dockerfile',
       'gitignore',
