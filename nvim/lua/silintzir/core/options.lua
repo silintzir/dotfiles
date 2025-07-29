@@ -4,6 +4,9 @@ local o = vim.o
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 vim.g.editorconfig = true
+-- vim.g.loaded_node_provider = 1
+
+o.sessionoptions = 'blank,buffers,curdir,folds,help,tabpages,winsize,winpos,terminal,localoptions'
 
 o.fixendofline = true
 o.fileformat = 'unix'
