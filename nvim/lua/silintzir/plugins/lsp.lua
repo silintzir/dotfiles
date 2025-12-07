@@ -146,6 +146,7 @@ return {
       ts_ls = {},
       svelte = {},
       tailwindcss = {},
+      jsonls = {},
     }
 
     -- Ensure the servers and tools above are installed

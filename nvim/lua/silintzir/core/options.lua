@@ -64,3 +64,7 @@ o.scrolloff = 10
 
 -- set highlight on search. a keymap allow to clear highlights when escape is used in normal mode
 o.hlsearch = true
+
+-- show tabs and spaces
+vim.opt.list = true
+vim.opt.listchars = { tab = '» ', trail = '·', eol = '$', space = '·' }
