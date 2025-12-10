@@ -145,7 +145,7 @@ return {
       },
       ts_ls = {},
       svelte = {},
-      tailwindcss = {},
+      -- tailwindcss = {},
       jsonls = {},
     }
 
@@ -162,9 +162,9 @@ return {
     local ensure_installed = vim.tbl_keys(servers or {})
     vim.list_extend(ensure_installed, {
       'stylua', -- Used to format Lua code
-      'prettier',
-      'prettierd',
-      'markdownlint',
+      -- 'prettier',
+      -- 'prettierd',
+      -- 'markdownlint',
     })
     require('mason-tool-installer').setup { ensure_installed = ensure_installed }
 

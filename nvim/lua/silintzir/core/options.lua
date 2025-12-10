@@ -66,5 +66,5 @@ o.scrolloff = 10
 o.hlsearch = true
 
 -- show tabs and spaces
-vim.opt.list = true
+vim.opt.list = false
 vim.opt.listchars = { tab = '» ', trail = '·', eol = '$', space = '·' }
