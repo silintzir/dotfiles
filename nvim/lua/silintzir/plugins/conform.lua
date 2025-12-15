@@ -31,7 +31,7 @@ return {
       typescriptreact = { 'prettierd', stop_after_first = true },
       svelte = { 'prettierd', stop_after_first = true },
       css = { 'prettierd', stop_after_first = true },
-      json = { 'prettierd', stop_after_first = true },
+      json = { 'biome', stop_after_first = true },
       jsonc = { 'prettierd', stop_after_first = true },
       ejs = { 'prettierd', stop_after_first = true },
       html = { 'prettierd', stop_after_first = true },
