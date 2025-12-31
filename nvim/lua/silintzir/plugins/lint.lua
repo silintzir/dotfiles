@@ -53,6 +53,19 @@ return {
       vim.api.nvim_create_autocmd({ 'BufEnter', 'BufWritePost', 'InsertLeave' }, {
         group = lint_augroup,
         callback = function()
+          -- If the current filetype uses eslint, check for a config file
+          local ft = vim.bo.filetype
+          local eslint_fts = { 'javascript', 'typescript', 'javascriptreact', 'typescriptreact', 'svelte' }
+
+          if vim.tbl_contains(eslint_fts, ft) then
+            -- Look for common eslint config files
+            local has_config =
+              vim.fs.find({ 'eslint.config.js', '.eslintrc.js', '.eslintrc.json', '.eslintrc' }, { path = vim.fn.expand '%:p:h', upward = true })[1]
+
+            if not has_config then
+              return -- Exit early if no config is found
+            end
+          end
           require('lint').try_lint()
         end,
       })

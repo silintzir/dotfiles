@@ -145,7 +145,7 @@ return {
       },
       ts_ls = {},
       svelte = {},
-      -- tailwindcss = {},
+      tailwindcss = {},
       jsonls = {},
     }
 
