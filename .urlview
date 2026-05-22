@@ -1,0 +1,2 @@
+# used by tmux-urlview and urlview(1); %s is replaced with the URL
+COMMAND xdg-open %s
