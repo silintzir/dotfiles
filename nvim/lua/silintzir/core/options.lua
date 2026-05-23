@@ -68,6 +68,10 @@ o.scrolloff = 10
 -- set highlight on search. a keymap allow to clear highlights when escape is used in normal mode
 o.hlsearch = true
 
+-- no collapsed folds on open (treesitter sets foldmethod=expr for some filetypes)
+o.foldenable = false
+o.foldlevel = 99
+
 -- show tabs and spaces
 vim.opt.list = false
 vim.opt.listchars = { tab = '» ', trail = '·', eol = '$', space = '·' }
