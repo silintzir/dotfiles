@@ -3,7 +3,7 @@ return {
   event = 'VeryLazy',
   cmd = 'Trouble',
   opts = {},
-  dependencies = { 'nvim-tree/nvim-web-devicons', 'folke/todo-comments.nvim' },
+  dependencies = { 'echasnovski/mini.icons', 'folke/todo-comments.nvim' },
   keys = {
     { '<leader>dt', '<cmd>TroubleToggle<CR>', desc = 'Trouble [D]iagnostics [T]oggle' },
     { '<leader>dw', '<cmd>TroubleToggle workspace_diagnostics<CR>', desc = 'Trouble [D]iagnostics for [W]orkspace' },

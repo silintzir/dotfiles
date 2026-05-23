@@ -11,9 +11,7 @@ return {
       -- NOTE: `opts = {}` is the same as calling `require('fidget').setup({})`
       { 'j-hui/fidget.nvim', opts = {} },
 
-      -- `neodev` configures Lua LSP for your Neovim config, runtime and plugins
-      -- used for completion, annotations and signatures of Neovim apis
-      { 'folke/neodev.nvim', opts = {} },
+      { 'folke/lazydev.nvim', ft = 'lua' },
     },
   },
   config = function()
@@ -56,7 +54,9 @@ return {
 
         -- Rename the variable under your cursor.
         --  Most Language Servers support renaming across files, etc.
-        map('<leader>rn', vim.lsp.buf.rename, '[R]e[n]ame')
+        vim.keymap.set('n', '<leader>rn', function()
+          return ':IncRename ' .. vim.fn.expand '<cword>'
+        end, { buffer = event.buf, expr = true, desc = 'LSP: [R]e[n]ame' })
 
         -- Execute a code action, usually your cursor needs to be on top of an error
         -- or a suggestion from your LSP for this to activate.
@@ -157,6 +157,22 @@ return {
       svelte = {},
       tailwindcss = {},
       jsonls = {},
+      html = {},
+      emmet_ls = {
+        filetypes = {
+          'html',
+          'css',
+          'scss',
+          'javascript',
+          'javascriptreact',
+          'typescript',
+          'typescriptreact',
+          'svelte',
+        },
+      },
+      yamlls = {},
+      dockerls = {},
+      eslint = {},
     }
 
     -- Ensure the servers and tools above are installed
@@ -173,9 +189,10 @@ return {
     vim.list_extend(ensure_installed, {
       'stylua',
       'prettierd',
-      'eslint_d',
       'markdownlint-cli2',
       'biome',
+      'shfmt',
+      'shellcheck',
     })
     require('mason-tool-installer').setup { ensure_installed = ensure_installed }
 

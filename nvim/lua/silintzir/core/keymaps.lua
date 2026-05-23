@@ -75,7 +75,6 @@ set('n', 'S', '<Plug>(leap-from-window)')
 set({ 'x', 'o' }, 's', '<Plug>(leap-forward)')
 set({ 'x', 'o' }, 'S', '<Plug>(leap-backward)')
 
-set('n', '<leader>tc', '<cmd>ColorizerToggle<cr>', { desc = '[T]oggle [C]olorizer' })
 set('n', '<leader>tr', '<cmd>lua ToggleRelativeNumbers()<cr>', { desc = '[T]oggle [R]elative numbers' })
 set('n', '<leader>tw', '<cmd>lua ToggleWrap()<cr>', { desc = '[T]oggle [W]rap' })
 

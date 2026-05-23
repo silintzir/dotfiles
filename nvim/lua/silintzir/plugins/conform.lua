@@ -46,6 +46,10 @@ return {
       ejs = { 'prettierd', stop_after_first = true },
       html = { 'prettierd', stop_after_first = true },
       markdown = { 'prettierd', stop_after_first = true },
+      sh = { 'shfmt' },
+      bash = { 'shfmt' },
+      zsh = { 'shfmt' },
+      yaml = { 'prettierd', stop_after_first = true },
     },
   },
 }
