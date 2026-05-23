@@ -4,7 +4,13 @@ local o = vim.o
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 vim.g.editorconfig = true
--- vim.g.loaded_node_provider = 1
+
+-- Optional providers (not used; silences :checkhealth warnings)
+vim.g.loaded_python3_provider = 0
+vim.g.loaded_perl_provider = 0
+vim.g.loaded_ruby_provider = 0
+
+-- clipboard=unnamedplus requires wl-clipboard (Wayland) or xclip (X11)
 
 o.sessionoptions = 'blank,buffers,curdir,folds,help,tabpages,winsize,winpos,terminal,localoptions'
 
@@ -29,10 +35,7 @@ o.breakindent = true
 -- save undo history
 o.undofile = true
 o.swapfile = false
-
--- no hidden buffers - unload
 o.hidden = true
-o.swapfile = false
 
 -- case insensitive search unless capital letters are used
 o.ignorecase = true

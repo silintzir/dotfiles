@@ -6,12 +6,12 @@ return {
       local lint = require 'lint'
 
       lint.linters_by_ft = {
-        markdown = { 'markdownlint' },
-        typescript = { 'eslint' },
-        javascript = { 'eslint' },
-        typescriptreact = { 'eslint' },
-        javascriptreact = { 'eslint' },
-        svelte = { 'eslint' },
+        markdown = { 'markdownlint-cli2' },
+        typescript = { 'eslint_d' },
+        javascript = { 'eslint_d' },
+        typescriptreact = { 'eslint_d' },
+        javascriptreact = { 'eslint_d' },
+        svelte = { 'eslint_d' },
         -- css = { 'stylelint' },
       }
 
