@@ -20,6 +20,7 @@ return {
 
     -- Document existing key chains
     require('which-key').add {
+      { '<leader>a', group = 'Cl[A]ude Code' },
       { '<leader>c', group = '[C]ode' },
       { '<leader>d', group = '[D]ocument' },
       { '<leader>e', group = '[E]xplorer' },
