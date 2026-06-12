@@ -1,6 +1,6 @@
 # Enable Powerlevel10k instant prompt (speeds up loading)
 if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
-  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+	source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
 # Load Powerlevel10k Theme
@@ -57,3 +57,10 @@ alias mkdir='mkdir -p'
 alias update='paru -Syu' # One command to update system + AUR
 alias pn="pnpm"
 alias vim="nvim"
+
+# PNPM Global Bin Configuration
+export PNPM_HOME="$HOME/.local/share/pnpm"
+case ":$PATH:" in
+*":$PNPM_HOME/bin:"*) ;;
+*) export PATH="$PNPM_HOME/bin:$PATH" ;;
+esac
