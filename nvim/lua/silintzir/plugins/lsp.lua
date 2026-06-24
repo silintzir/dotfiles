@@ -153,6 +153,11 @@ return {
           documentFormattingProvider = false,
           documentRangeFormattingProvider = false,
         },
+        settings = {
+          typescript = {
+            tsdk = '.yarn/sdks/typescript/lib',
+          },
+        },
       },
       svelte = {},
       tailwindcss = {},
