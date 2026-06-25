@@ -17,6 +17,12 @@ o.sessionoptions = 'blank,buffers,curdir,folds,help,tabpages,winsize,winpos,term
 o.fixendofline = true
 o.fileformat = 'unix'
 
+-- indentation
+vim.opt.expandtab = true
+vim.opt.tabstop = 2
+vim.opt.shiftwidth = 2
+vim.opt.softtabstop = 2
+
 -- show numbers
 o.number = true
 
