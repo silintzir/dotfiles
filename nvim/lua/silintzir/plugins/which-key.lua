@@ -31,6 +31,7 @@ return {
       { '<leader>t', group = '[T]oggle' },
       { '<leader>h', group = 'Git [H]unk' },
       { '<leader>b', group = '[B]uffers' },
+      { '<leader>m', group = '[M]arkdown' },
       { '<leader>c_', hidden = true },
       { '<leader>d_', hidden = true },
       { '<leader>r_', hidden = true },
@@ -39,6 +40,7 @@ return {
       { '<leader>t_', hidden = true },
       { '<leader>h_', hidden = true },
       { '<leader>b_', hidden = true },
+      { '<leader>m_', hidden = true },
     }
   end,
 }
