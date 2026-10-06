@@ -20,6 +20,10 @@ return {
           if not lint.linters_by_ft[ft] then
             return
           end
+          -- .env files get bash filetype for highlighting only; don't lint them
+          if vim.fn.expand('%:t'):match '%.env' then
+            return
+          end
           require('lint').try_lint()
         end,
       })
