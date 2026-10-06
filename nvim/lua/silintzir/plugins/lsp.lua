@@ -194,7 +194,6 @@ return {
     vim.list_extend(ensure_installed, {
       'stylua',
       'prettierd',
-      'markdownlint-cli2',
       'biome',
       'shfmt',
       'shellcheck',
