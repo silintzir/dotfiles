@@ -1,10 +1,16 @@
+# Initialize fnm BEFORE instant prompt to prevent console output conflicts
+if command -v fnm &>/dev/null; then
+  eval "$(fnm env --use-on-cd)"
+fi
+
 # Enable Powerlevel10k instant prompt (speeds up loading)
 if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
-	source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
 # Load Powerlevel10k Theme
-source /usr/share/zsh-theme-powerlevel10k/powerlevel10k.zsh-theme
+[[ -f /usr/share/zsh-theme-powerlevel10k/powerlevel10k.zsh-theme ]] &&
+  source /usr/share/zsh-theme-powerlevel10k/powerlevel10k.zsh-theme
 
 # Basic History Settings
 HISTFILE=~/.zsh_history
@@ -12,51 +18,49 @@ HISTSIZE=10000
 SAVEHIST=10000
 setopt appendhistory sharehistory incappendhistory
 
-# Load Advanced Tab Completions
-autoload -Uz compinit && compinit
+# Fast Completion Init (Cached to speed up startup)
+autoload -Uz compinit
+if [[ -n ${ZDOTDIR:-$HOME}/.zcompdump(#qN.m+1) ]]; then
+  compinit
+else
+  compinit -C
+fi
+
 zstyle ':completion:*' menu select
 zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}'
 
-# Load Plugins (Must be loaded in this specific order)
-source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
-source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+# Load Plugins (Safely guarded)
+[[ -f /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh ]] &&
+  source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 
-# Load Powerlevel10k Config Wizard if it exists
+[[ -f /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh ]] &&
+  source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
+# Load Powerlevel10k Config Wizard
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
-# Initialize Fast Node Manager (fnm)
-eval "$(fnm env --use-on-cd)"
-
-# -------------------------------------------------------------------
 # Modern CLI Tool Aliases
-# -------------------------------------------------------------------
-
-# Replace ls with eza (with icons, colors, and smart groupings)
 alias ls='eza --color=always --group-directories-first'
 alias ll='eza -lh --color=always --group-directories-first --git'
 alias la='eza -aH --color=always --group-directories-first'
 alias l='eza -lah --color=always --group-directories-first --git'
 alias tree='eza --tree'
 
-# Replace cat with bat (adds syntax highlighting and line numbers)
-# We use '--style=plain' for plain cat, and keep full headers for 'bat'
 alias cat='bat --style=plain --pager=never'
 alias preview='bat'
 
-# Search aliases using fd (much faster than 'find')
 alias find='fd'
 alias hidden-find='fd --hidden --no-ignore'
 
-# -------------------------------------------------------------------
-# Bonus Quality-of-Life System Aliases
-# -------------------------------------------------------------------
+# Quality-of-Life System Aliases
 alias ..='cd ..'
 alias ...='cd ../..'
 alias ....='cd ../../..'
 alias mkdir='mkdir -p'
-alias update='paru -Syu' # One command to update system + AUR
+alias update='paru -Syu'
 alias pn="pnpm"
 alias vim="nvim"
+alias pagekite="pagekite.py"
 
 # PNPM Global Bin Configuration
 export PNPM_HOME="$HOME/.local/share/pnpm"
