@@ -33,16 +33,20 @@ return {
         lsp_fallback = not disable_filetypes[ft] and not conform_only[ft],
       }
     end,
+    formatters = {
+      -- Only in a project with a biome.json (or .jsonc): elsewhere it is unavailable, and the next formatter runs.
+      ['biome-check'] = { require_cwd = true },
+    },
     formatters_by_ft = {
       lua = { 'stylua' },
-      typescript = { 'prettierd', stop_after_first = true },
-      javascript = { 'prettierd', stop_after_first = true },
-      javascriptreact = { 'prettierd', stop_after_first = true },
-      typescriptreact = { 'prettierd', stop_after_first = true },
+      typescript = { 'biome-check', 'prettierd', stop_after_first = true },
+      javascript = { 'biome-check', 'prettierd', stop_after_first = true },
+      javascriptreact = { 'biome-check', 'prettierd', stop_after_first = true },
+      typescriptreact = { 'biome-check', 'prettierd', stop_after_first = true },
       svelte = { 'prettierd', stop_after_first = true },
       css = { 'prettierd', stop_after_first = true },
-      json = { 'prettierd', stop_after_first = true },
-      jsonc = { 'prettierd', stop_after_first = true },
+      json = { 'biome-check', 'prettierd', stop_after_first = true },
+      jsonc = { 'biome-check', 'prettierd', stop_after_first = true },
       ejs = { 'prettierd', stop_after_first = true },
       html = { 'prettierd', stop_after_first = true },
       markdown = { 'prettierd', stop_after_first = true },
