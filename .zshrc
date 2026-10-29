@@ -68,3 +68,5 @@ case ":$PATH:" in
 *":$PNPM_HOME/bin:"*) ;;
 *) export PATH="$PNPM_HOME/bin:$PATH" ;;
 esac
+
+export CLOUDFLARE_API_TOKEN="$(secret-tool lookup service cloudflare account api 2>/dev/null)"
