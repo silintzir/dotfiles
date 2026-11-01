@@ -69,4 +69,7 @@ case ":$PATH:" in
 *) export PATH="$PNPM_HOME/bin:$PATH" ;;
 esac
 
+# Pandectes developer tool (`dev`), from ~/Projects/pandectes/dev
+export PATH="$HOME/Projects/pandectes/dev/bin:$PATH"
+
 export CLOUDFLARE_API_TOKEN="$(secret-tool lookup service cloudflare account api 2>/dev/null)"
