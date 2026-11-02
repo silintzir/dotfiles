@@ -69,6 +69,9 @@ case ":$PATH:" in
 *) export PATH="$PNPM_HOME/bin:$PATH" ;;
 esac
 
+# Rust binaries installed with `cargo install`
+export PATH="$HOME/.cargo/bin:$PATH"
+
 # Pandectes developer tool (`dev`), from ~/Projects/pandectes/dev
 export PATH="$HOME/Projects/pandectes/dev/bin:$PATH"
 
