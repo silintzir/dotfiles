@@ -76,3 +76,8 @@ export PATH="$HOME/.cargo/bin:$PATH"
 export PATH="$HOME/Projects/pandectes/dev/bin:$PATH"
 
 export CLOUDFLARE_API_TOKEN="$(secret-tool lookup service cloudflare account api 2>/dev/null)"
+
+# Shopify CLI usage reporting off (commands, timing, account and app identifiers, security-scan
+# finding counts). https://shopify.dev/docs/api/shopify-cli#usage-reporting
+export SHOPIFY_CLI_NO_ANALYTICS=1
+export OPT_OUT_INSTRUMENTATION=true
